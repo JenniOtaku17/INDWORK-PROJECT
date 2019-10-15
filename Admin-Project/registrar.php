@@ -48,6 +48,8 @@
     $tamaño = $_FILES['cv']['size'];
     $ruta = $_FILES['cv']['tmp_name'];
     $destino = "cvs/".$nombre;
+	  
+	  copy($ruta, $destino);
   }
 
 $conexion=mysqli_connect("localhost","root","","indwork") or
