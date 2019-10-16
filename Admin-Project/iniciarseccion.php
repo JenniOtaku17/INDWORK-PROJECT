@@ -121,13 +121,63 @@ while ($reg=mysqli_fetch_array($registros))
 <div class="container">
 <h3>Haz clic para ver tus trabajos</h3>
 
-  <button type="button" class="nav-link boton editar" data-toggle="collapse" data-target="#demo">Solicitudes de Trabajo</button>
-  <div id="demo" class="collapse">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </div>
+ <button type="button" class="nav-link boton editar" data-toggle="collapse" data-target="#demo">Solicitudes de Trabajo</button>
+<div id="demo" class="collapse">
+	
+  <table class = 'table table-stripped'>
+
+<thead>
+
+<tr>
+
+<th>Contratante</th>
+<th>Asunto</th>
+<th>Descripcion</th>
+<th>Aceptar</th>
+<th>Rechazar</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<?php $conexionn=mysqli_connect("localhost","root","","indwork") or
+    die("Problemas con la conexión");
+
+$registrost=mysqli_query($conexionn,"Select c.ID, c.ID_EMISOR, p.NOMBRE , p.APELLIDO, c.DESCRIPCION, c.ASUNTO
+From contratos c inner join profesional p
+On c.ID_EMISOR = p.ID
+ where id_receptor = '$id'") or
+  die("Problemas en el select:".mysqli_error($conexionn));
+
+while($tr =mysqli_fetch_array($registrost)){
+
+$id_contra = $tr['ID'];
+$aceptar = 'aceptar';
+$rechazar = "rechazar";
+
+echo"
+
+<tr>
+
+<td>{$tr['NOMBRE']}</td>
+<td>{$tr['ASUNTO']}</td>
+<td>{$tr['DESCRIPCION']}</td>
+<td> <a href ='solicitudes.php?id=".$id_contra."&estado=".$aceptar."' class ='btn btn-success'><i class='fas fa-check-circle'></i></a> </td>
+<td> <a href ='solicitudes.php?id=".$id_contra."&estado=".$rechazar."' class ='btn btn-danger'>X</a> </td>
+
+</tr>";
+
+}
+
+?>
+
+</tbody>
+</table>
+
 </div>
+</div>
+
 <div class="container">
 
   <button type="button" class="nav-link boton editar" data-toggle="collapse" data-target="#demo2">Trabajos en Progreso</button>
