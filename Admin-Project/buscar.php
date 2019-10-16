@@ -11,19 +11,14 @@
 
 <body>
 
-
 <nav class="navbar navbar-default bg-dark">
-  <form action="perfil.php" method="get" class="form-inline" >
-
-	<input type="text" name="id" class="form-control mr-sm-2" placeholder="Dime el ID">
-	<input type="submit" name="buscar" value="BUSCAR" class="btn btn-primary">
-  </form>
+  <img src="img/logo.png" height="50px" width="220px" />
   <ul class="navbar nav justify-content-end text-white">
     <li class="nav-item" >
-      <a class="nav-link" href="iniciarseccion.html">Iniciar Seccion</a>
+      <a class="nav-link" href="resgistrar.html">Registrarse</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="resgistrar.html">Registrarse</a>
+      <a class="nav-link" href="buscar.html">Visitante</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="inicio.html">Inicio</a>
@@ -48,18 +43,14 @@ while ($reg=mysqli_fetch_array($registros))
 	<table class="table ">
 	<thead class="thead-dark">
       <tr>
-        <th>Id</th>
-        <th>Nombre</th>
-        <th>Apellido</th>
+        <th>Nombre Completo</th>
         <th>Oficio</th>
         <th>Foto</th>
       </tr>
     </thead>
 	<tbody>
     <tr>
-    <td>'.$reg['ID'].'</td>
-		<td>'.$reg['NOMBRE'].'</td>
-		<td>'.$reg['APELLIDO'].'</td>
+		<td><a href="perfil.php?id='.$reg['ID'].'">'.$reg['NOMBRE'].' '.$reg['APELLIDO'].'</a></td>
 		<td>'.$reg['OFICIO'].'</td>
 		<td><img height="80px" src="data:image/jpg;base64,'.base64_encode($reg['FOTO']).'"/></td>
 	</tr></tbody></table></div>';

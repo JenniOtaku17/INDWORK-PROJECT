@@ -147,7 +147,7 @@ while ($reg=mysqli_fetch_array($registros))
 $registrost=mysqli_query($conexionn,"Select c.ID, c.ID_EMISOR, p.NOMBRE , p.APELLIDO, c.DESCRIPCION, c.ASUNTO
 From contratos c inner join profesional p
 On c.ID_EMISOR = p.ID
- where id_receptor = '$id'") or
+ where id_receptor = '$id' and ESTADO= ' '") or
   die("Problemas en el select:".mysqli_error($conexionn));
 
 while($tr =mysqli_fetch_array($registrost)){
