@@ -63,10 +63,10 @@ mysqli_query($conexion,"insert into profesional (NOMBRE,APELLIDO,CEDULA,OFICIO,T
   $correo = $_REQUEST['correo'];
   $asunto = 'BIENVENIDO A INDWORK';
   $mensaje = $_REQUEST['nombre'].' '.$_REQUEST['apellido'].' la familia INDWORK le da una cordial Bienvenida!';
-  mail($correo, $asunto , $mensaje);
+  //mail($correo, $asunto , $mensaje);
 
 mysqli_close($conexion);
-echo "<script> alertify.alert('INDWORK aviso','Usuario registrado Exitosamente!', function(){ alertify.message('OK'); window.location= 'iniciarseccion.html'; }); </script>";
+  echo "<script> alertify.alert('INDWORK aviso','Usuario registrado Exitosamente!', function(){ alertify.message('OK'); window.location= 'iniciarseccion.html'; }); </script>";
 }catch(Exception $e)
 {
 	echo "<script> alertify.alert('INDWORK aviso','Error al registrar usuario!', function(){ alertify.message('OK'); window.location= 'resgistrar.html'; }); </script>";
