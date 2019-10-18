@@ -1,0 +1,120 @@
+.contenedor img {
+    width: 100%;
+    /*height: 500%;
+    max-height: 500px;*/
+    z-index: -1;
+    float: left;
+    filter: brightness(0.4);
+}
+
+.buscador {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.formulario {
+    width: 60%;
+    padding: 10px;
+}
+
+.buscador-text {
+    width: 80%;
+    border-style: none;
+    outline: none;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 50px;
+    padding: 10px;
+    transition-duration: 0.4s;
+    -webkit-box-shadow: -1px 7px 16px -6px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 7px 16px -6px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 7px 16px -6px rgba(0, 0, 0, 0.75);
+}
+
+.oscuro {
+    -webkit-box-shadow: 2px 2px 26px -12px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 2px 26px -12px rgba(0, 0, 0, 0.75);
+    box-shadow: 2px 2px 26px -12px rgba(0, 0, 0, 0.75);
+}
+
+.fondo {
+    background-color: #E8E8E8;
+}
+
+.buscador-text:focus {
+    border: 2px solid #169BD5;
+    transition-duration: 0.4s;
+}
+
+.titulo {
+    text-align: center;
+    color: ivory;
+    padding: 10% 0;
+}
+
+.foto {
+    width: 100%;
+    max-width: 150px;
+    /*border-radius: 200px;*/
+    clip-path: circle(40% at 50% 50%);
+}
+
+.encabezado {
+    font-size: 1.4em;
+}
+
+.tabla {
+    margin: 50px 0;
+}
+
+.nada {
+    text-decoration: none;
+}
+
+.centrado {
+    text-align: center;
+    margin: auto;
+}
+
+.cuadro {
+    width: 90%;
+    margin: 75px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.visitar {
+    width: 20%;
+}
+
+.cuadro-izquierda {
+    width: 29%;
+}
+
+.cuadro-derecha {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.nombre-perfil {
+    text-align: left;
+    margin-left: 10%;
+    margin-top: 2%;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.oficio {
+    text-align: left;
+    margin-left: 10%;
+    margin-top: 2%;
+    font-size: 1.7em;
+    font-weight: 300;
+}

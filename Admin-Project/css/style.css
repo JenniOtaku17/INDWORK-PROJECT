@@ -143,3 +143,7 @@
     .imagen {
         border-radius: 100px;
     }
+    
+    .buscador-text {
+        width: 80%;
+    }
