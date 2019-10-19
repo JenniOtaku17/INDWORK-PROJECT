@@ -16,59 +16,31 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-default bg-dark">
-  <img src="img/logo.png" height="50px" width="220px" />
-  <ul class="navbar nav justify-content-end text-white">
-    <li class="nav-item" >
-      <a class="nav-link" href="iniciarseccion.html">Iniciar Seccion</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="resgistrar.html">Registrarse</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="buscar.html">Visitante</a>
-    </li>
-  </ul>
-
-</nav>
 
 <?php
+  include ('navbar.php');
+
   $idreceptor = $_REQUEST['idreceptor'];
 
-  $conexion=mysqli_connect("localhost","root","","INDWORK") or
-    die("Problemas con la conexión");
+  include ('conexion.php');
 
-  $registros=mysqli_query($conexion,"select ID, PASSWORD from PROFESIONAL where CORREO ='$_REQUEST[correo]'") or
-  die("Problemas en el select:".mysqli_error($conexion));
+  if(isset($_SESSION['id'])){
 
-  while ($reg=mysqli_fetch_array($registros))
-  {
-    $_SESSION['id']= $reg['ID'];
-
-    $id= $reg['ID'];
-    if($_REQUEST['password']== $reg['PASSWORD']){
-
-      try {
-        
-        mysqli_query($conexion,"insert into contratos (ID_EMISOR,ID_RECEPTOR,DESCRIPCION,ASUNTO) values
-                       ($id,$idreceptor,'$_REQUEST[descripcion]', '$_REQUEST[asunto]')")
-               or die("Problemas en el select".mysqli_error($conexion));
+  $id = $_SESSION['id'];
+        mysqli_query($conexion,"insert into contratos (ID_EMISOR,ID_RECEPTOR,DESCRIPCION,ASUNTO) values($id,$idreceptor,'$_REQUEST[descripcion]', '$_REQUEST[asunto]')")
+          or die("Problemas en el select".mysqli_error($conexion));
 
 
         $mensaje = $_REQUEST['descripcion'];
         $asunto= "INDWORK SOLICITUD: ".$_REQUEST['asunto'];
         $correo= $_REQUEST['correoreceptor'];
+
         if(mail($correo, $asunto , $mensaje)){
           echo "<script> alertify.alert('INDWORK aviso','Solicitud de Contrato enviada Exitosamente!', function(){ alertify.message('OK'); window.location= 'perfil.php?id=".$idreceptor."'; }); </script>";
         }
         else{
           echo "<script> alertify.alert('INDWORK aviso','Error al enviar Solicitud de Contrato!', function(){ alertify.message('OK'); window.location= 'perfil.php?id=".$idreceptor."'; }); </script>";
         }
-
-      } catch (Exception $e) {
-        echo "<script> alertify.alert('INDWORK aviso','Error al enviar Solicitud de Contrato!', function(){ alertify.message('OK'); window.location= 'perfil.php?id=".$idreceptor."'; }); </script>";
-      }
-    }
   }
   
   

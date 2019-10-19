@@ -8,8 +8,7 @@
 
 <?php 
 
-$conexion=mysqli_connect("localhost","root","","indwork") or
-    die("Problemas con la conexión");
+include ('conexion.php');
 
 $registros=mysqli_query($conexion,"select  CV from profesional where CORREO ='$_REQUEST[correo]' or ID='$_GET[id]'") or
   die("Problemas en el select:".mysqli_error($conexion));

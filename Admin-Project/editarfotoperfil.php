@@ -12,14 +12,14 @@
 
 <body>
     <?php
-$id = $_GET['id'];
+session_start();
+$id= $_SESSION['id'];
 
-$conexion=mysqli_connect("localhost","root","","INDWORK") or
-die("Problemas con la conexión");
+include ('conexion.php');
 
-if(isset($_GET['id'])){
+if(isset($id)){
     $img = addslashes(file_get_contents($_FILES['foto']['tmp_name']));
-    mysqli_query($conexion,"update PROFESIONAL SET FOTO='$img' where ID='$_GET[id]' ") or
+    mysqli_query($conexion,"update PROFESIONAL SET FOTO='$img' where ID=$id ") or
 die("Problemas en el select:".mysqli_error($conexion));
 
 echo "<script> alertify.alert('INDWORK aviso','Datos Actualizados Exitosamente!',

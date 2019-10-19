@@ -16,22 +16,9 @@
 
 <body>
 
-  <!-----------------Navigation------------------->
-
-	<nav class="navbar navbar-default bg-dark">
-  <img src="img/logo.png" height="50px" width="220px" />
-  <ul class="navbar nav justify-content-end text-white">
-    <li class="nav-item" >
-      <a class="nav-link" href="resgistrar.html">Registrarse</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="buscar.html">Visitante</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="inicio.html">Inicio</a>
-    </li>
-  </ul>
-</nav>
+<?php
+	include ('navbar.php');
+?>
 
 <br>
 
@@ -48,7 +35,7 @@
 	<form action="iniciarseccion.php" method="post">
   <div class="group">
     <input type="text" name="correo"><span class="highlight" required></span><span class="bar"></span>
-    <label><i class="fas fa-user"></i> Usuario</label>
+    <label><i class="fas fa-user"></i> Correo</label>
   </div>
   <div class="group">
     <input type="password" name="password" onclick= 'none'><span class="highlight" required></span><span class="bar"></span>

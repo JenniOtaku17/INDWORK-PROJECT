@@ -18,39 +18,21 @@
 <body>
 
 <?php
-$conexion=mysqli_connect("localhost","root","","INDWORK") or
-die("Problemas con la conexión");
+include ('navbar.php');
+include ('conexion.php');
 
 //error_reporting(0);
-$id = $_GET['id'];
-session_start();
-$var= $_SESSION['id'];
+
+$id= $_SESSION['id'];
 ?>
 
-<nav class="navbar navbar-default bg-dark">
-  <img src="img/logo.png" height="50px" width="220px" />
-  <ul class="navbar nav justify-content-end text-white">
-    <li class="nav-item" >
-      <a class="nav-link" href="buscar.html">Visitante</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="inicio.html">Inicio</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="iniciarseccion.php?id=<?php echo $id ?>">Mi Perfil</a>
-    </li>
-      <li class="nav-item">
-      <a class="nav-link" href="cerrarsession.php"><img src="cerrar.png" height="40px" width="40px" alt="Cerrar Session"/></a>
-    </li>
-  </ul>
-
-</nav><br><br>
+<br>
 <section class="container" align="center">
 
 <?php
 
 
-if( empty($var)){
+if( empty($id)){
 	echo "<script> alertify.alert('INDWORK aviso','Debes iniciar sesion para tener acceso a esta pagina!', function(){ alertify.message('OK'); window.location= 'iniciarseccion.html'; }); </script>";
 
 }

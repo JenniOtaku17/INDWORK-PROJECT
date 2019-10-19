@@ -12,15 +12,14 @@
 
 <body>
     <?php
-$id = $_GET['id'];
+session_start();
+$id= $_SESSION['id'];
 
-$conexion=mysqli_connect("localhost","root","","INDWORK") or
-die("Problemas con la conexión");
+include ('conexion.php');
 
-if(isset($_GET['id'])){
+if(isset($id)){
     mysqli_query($conexion,"update PROFESIONAL
-                  SET OFICIO='$_REQUEST[oficio]',
-                  ME='$_REQUEST[me]'  where ID ='$_GET[id]' ") or
+                  SET OFICIO='$_REQUEST[oficio]' and ME='$_REQUEST[me]'  where ID =$id ") or
     die("Problemas en el select:".mysqli_error($conexion));
 
     echo "<script> alertify.alert('INDWORK aviso','Datos Actualizados Exitosamente!',

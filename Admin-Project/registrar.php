@@ -1,80 +1,169 @@
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta http-equiv="x-ua-compatible" content="ie-edge">
-<link rel="shortcut icon" href="#" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css"/>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.min.css"/>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.min.css"/>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.min.css"/>
-<title>Registrarse</title>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie-edge">
+    <link rel="shortcut icon" href="#" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/registrar.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Registrarse</title>
 </head>
 
 <body>
 
-  <!-----------------Navigation------------------->
+    <!-----------------Navigation------------------->
 
-	<nav class="navbar navbar-default bg-dark">
-  <img src="img/logo.png" height="50px" width="220px" />
-  <ul class="navbar nav justify-content-end text-white">
-    <li class="nav-item" >
-      <a class="nav-link" href="iniciarseccion.html">Iniciar Sesion</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="resgistrar.html">Registrarse</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="buscar.html">Visitante</a>
-    </li>
-  </ul>
-</nav>
+    <?php
+	    include ('navbar.php');
+    ?>
+    
 
-<br>
-<br>
+    <br>
 
-<!--------------------Container------------------------>
+    <!--------------------Container------------------------>
 
-  <?php
-  
-  if(isset($_POST['registrar']))
-  {
-    $nombre = $_FILES['cv']['name'];
-    $tipo = $_FILES['cv']['type'];
-    $tamaño = $_FILES['cv']['size'];
-    $ruta = $_FILES['cv']['tmp_name'];
-    $destino = "cvs/".$nombre;
-	  
-	  copy($ruta, $destino);
-  }
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="form-group ">
+                <!--w-75-->
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h1 align="center">REGISTRAR USUARIO</h1>
+                <br>
+                <br>
+                <br>
 
-$conexion=mysqli_connect("localhost","root","","indwork") or
-    die("Problemas con la conexión");
-try{
-$img = addslashes(file_get_contents($_FILES['foto']['tmp_name']));
-mysqli_query($conexion,"insert into profesional (NOMBRE,APELLIDO,CEDULA,OFICIO,TIPODEUSUARIO,PAIS,FOTO,CV,TELEFONO,DIRECCION,CORREO,PASSWORD,REGION,ME) values
-                       ('$_REQUEST[nombre]','$_REQUEST[apellido]','$_REQUEST[cedula]', '$_REQUEST[oficio]', '$_REQUEST[tipodeusuario]','$_REQUEST[pais]','$img','$nombre', '$_REQUEST[telefono]', '$_REQUEST[direccion]','$_REQUEST[correo]','$_REQUEST[password]','$_REQUEST[region]','$_REQUEST[me]')")
-  or die("Problemas en el select".mysqli_error($conexion));
+                <form action="registrar1.php" method="post" enctype="multipart/form-data">
 
-  $correo = $_REQUEST['correo'];
-  $asunto = 'BIENVENIDO A INDWORK';
-  $mensaje = $_REQUEST['nombre'].' '.$_REQUEST['apellido'].' la familia INDWORK le da una cordial Bienvenida!';
-  //mail($correo, $asunto , $mensaje);
+                    <!-----------------Datos Personales------------------->
 
-mysqli_close($conexion);
-  echo "<script> alertify.alert('INDWORK aviso','Usuario registrado Exitosamente!', function(){ alertify.message('OK'); window.location= 'iniciarseccion.html'; }); </script>";
-}catch(Exception $e)
-{
-	echo "<script> alertify.alert('INDWORK aviso','Error al registrar usuario!', function(){ alertify.message('OK'); window.location= 'resgistrar.html'; }); </script>";
-}
+                    <div class="contenedor-registro ">
+                        <div class="flex-zona-izquierda zona-izquierda ">
+                            <img src="img/user-solid.svg" alt="">
+                            <p class="subtitulo">Datos Personales</p>
+                        </div>
+                        <div class="vl2"> </div>
+                        <div class="flex-columna zona-derecha ">
+                            <div class="arriba ">
+                                <label>Cedula:</label>
+                                <input type="text" name="cedula" class="form-control" required><br>
+                            </div>
 
-?>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                            <div class="abajo abajo-flex ">
+                                <div class=" nombre">
+                                    <label>Nombre:</label>
+                                    <input type="text" name="nombre" class="form-control" required><br>
+                                </div>
+                                <div class="espacio"></div>
+                                <div class=" nombre">
+                                    <label>Apellido:</label>
+                                    <input type="text" name="apellido" class="form-control" required><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-----------------Datos Profesionales------------------->
+
+                    <div class="contenedor-registro ">
+                        <div class="flex-zona-izquierda zona-izquierda ">
+                            <img src="img/datos-profesionales.svg" alt="">
+                            <p class="subtitulo">Datos Profesionales</p>
+                        </div>
+                        <div class="vl2"> </div>
+                        <div class="flex-columna zona-derecha ">
+                            <div class="arriba">
+                                <label>Oficio o Profesion:</label>
+                                <input type="text" name="oficio" class="form-control responsive-80"><br>
+
+                                <label>Tipo de usuario:   </label>
+                                <input type="radio" name="tipodeusuario" value="PRO" required> Para contratar
+                                <input type="radio" name="tipodeusuario" value="CLI" required> Cliente
+                                <br>
+                                <br>
+
+                                <label>Tu Foto:</label>
+                                <input style="border: 2px dotted #169BD5; padding: 5px;" type="file" name="foto" accept="image/*" /><br><br>
+
+                                <label>Tu Curriculum:</label>
+                                <input style="border: 2px dotted #169BD5; padding: 5px;" class="archivo" type="file" name="cv" accept="application/pdf" /><br><br>
+                            </div>
+                        </div>
+                    </div>
+                    <!-----------------Datos Nacionales------------------->
+
+                    <div class="contenedor-registro ">
+                        <div class="flex-zona-izquierda zona-izquierda ">
+                            <img src="img/flag-solid.svg" alt="">
+                            <p class="subtitulo">Datos Nacionales</p>
+                        </div>
+                        <div class="vl2"> </div>
+                        <div class="flex-columna zona-derecha ">
+                            <div class="arriba">
+                                <label>Pais:</label>
+                                <input type="text" name="pais" class="form-control" required><br>
+
+                                <label>Region:</label>
+                                <input type="text" name="region" class="form-control"><br>
+
+                                <label>Telefono:</label>
+                                <input type="text" name="telefono" class="form-control"><br>
+
+                                <label>Direccion:</label>
+                                <input type="text" name="direccion" class="form-control"><br>
+                            </div>
+                        </div>
+                    </div>
+                    <!-----------------Tu Cuenta------------------->
+
+                    <div class="contenedor-registro ">
+                        <div class="flex-zona-izquierda zona-izquierda ">
+                            <img src="img/cuenta.svg" alt="">
+                            <p class="subtitulo">Tu Cuenta</p>
+                        </div>
+                        <div class="vl2"> </div>
+                        <div class="flex-columna zona-derecha ">
+                            <div class="arriba">
+                                <label>Ingrese el correo:</label>
+                                <input type="text" name="correo" class="form-control mb-2 mr-sm-2" required><br>
+
+                                <div class="abajo abajo-flex ">
+                                    <div class=" nombre">
+                                        <label>Contraseña:</label>
+                                        <input type="password" name="password" class="form-control mb-2 mr-sm-2" required><br>
+                                    </div>
+                                    <div class="espacio"></div>
+                                    <div class=" nombre">
+                                        <label>Confirmar Contraseña:</label>
+                                        <input type="password" name="repassword" class="form-control" required><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-----------------Sobre ti------------------->
+
+                    <label>Cuentanos mas acerca de ti:</label>
+                    <textarea name="me" rows="5" class="form-control"></textarea>
+
+                    <div align="center" class="center">
+                        <input type="submit" class="enviar boton boton-registro" value="REGISTRAR" name="registrar" align="center" class="btn btn-primary mb-2">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
+
 </html>

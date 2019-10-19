@@ -12,12 +12,12 @@
 
 <body>
     <?php
-$id = $_GET['id'];
+session_start();
+$id= $_SESSION['id'];
 
-$conexion=mysqli_connect("localhost","root","","INDWORK") or
-die("Problemas con la conexión");
+include ('conexion.php');
 
-if(isset($_GET['id'])){
+if(isset($id)){
 $nombre = $_FILES['cv']['name'];
 $tipo = $_FILES['cv']['type'];
 $tamaño = $_FILES['cv']['size'];
@@ -26,7 +26,7 @@ $destino = "cvs/".$nombre;
 
 mysqli_query($conexion,"update PROFESIONAL
               SET cv= $nombre
-               where ID ='$_GET[id]' ") or
+               where ID =$id ") or
 die("Problemas en el select:".mysqli_error($conexion));
 
 echo "<script> alertify.alert('INDWORK aviso','Datos Actualizados Exitosamente!',

@@ -12,10 +12,10 @@
 
 <body>
     <?php
-$id = $_GET['id'];
+session_start();
+$id= $_SESSION['id'];
 
-$conexion=mysqli_connect("localhost","root","","INDWORK") or
-die("Problemas con la conexión");
+include ('conexion.php');
 
 $registros=mysqli_query($conexion,"select PASSWORD from PROFESIONAL where  ID=".$id) or
   die("Problemas en el select:".mysqli_error($conexion));
@@ -24,7 +24,7 @@ while ($reg=mysqli_fetch_array($registros))
 {
 if($_REQUEST['passwordold'] == $reg['PASSWORD']){
 mysqli_query($conexion,"update PROFESIONAL
-              SET PASSWORD='$_REQUEST[passwordnew]' where ID=".$id) or
+              SET PASSWORD='$_REQUEST[passwordnew]' where ID=$id") or
 die("Problemas en el select:".mysqli_error($conexion));
 
 echo "<script> alertify.alert('INDWORK aviso','Datos Actualizados Exitosamente!',

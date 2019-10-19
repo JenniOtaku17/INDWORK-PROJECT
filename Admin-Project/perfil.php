@@ -21,21 +21,9 @@
 <body>
 	
   <!-----------------Navigation------------------->
-
-<nav class="navbar navbar-default bg-dark">
-  <img src="img/logo.png" height="50px" width="220px" />
-  <ul class="navbar nav justify-content-end text-white">
-  <li class="nav-item">
-      <a class="nav-link" href="resgistrar.html">Registrar</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="iniciarseccion.html">Iniciar Sesion</a>
-    </li>
-     <li class="nav-item" >
-      <a class="nav-link" href="inicio.html">Inicio</a>
-    </li>
-  </ul>
-</nav>
+<?php
+	include ('navbar.php');
+?>
 
 <br>
 <br>
@@ -48,18 +36,15 @@
 
 
 <?php
-session_start();
-error_reporting(0);
-$conexion=mysqli_connect("localhost","root","","indwork") or
-    die("Problemas con la conexión");
 
+error_reporting(0);
+
+include ('conexion.php');
 $registros=mysqli_query($conexion,"select ID, CEDULA,NOMBRE,CV,FOTO,PASSWORD,OFICIO,APELLIDO,TELEFONO,DIRECCION,REGION,PAIS,ME from PROFESIONAL where CORREO ='$_REQUEST[correo]' or ID='$_GET[id]'") or
   die("Problemas en el select:".mysqli_error($conexion));
 
 while ($reg=mysqli_fetch_array($registros))
 {
-	$_SESSION['id']= $reg['ID'];
-
 	$id= $reg['ID'];
 	if($_REQUEST['password']== $reg['PASSWORD'] or  isset($_REQUEST['id'])){
 

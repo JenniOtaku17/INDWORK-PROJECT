@@ -11,26 +11,12 @@
 </head>
 
 <body>
-<nav class="navbar navbar-default bg-dark">
-  <img src="img/logo.png" height="50px" width="220px" />
-  <ul class="navbar nav justify-content-end text-white">
-    <li class="nav-item" >
-      <a class="nav-link" href="iniciarseccion.html">Iniciar Seccion</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="resgistrar.html">Registrarse</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="inicio.html">Inicio</a>
-    </li>
-  </ul>
-
-</nav><br><br>
 
 <?php
+include ('navbar.php');
+
 $id = $_GET['id'];
-$conexion=mysqli_connect("localhost","root","","INDWORK") or
-    die("Problemas con la conexión");
+include ('conexion.php');
 
 $registros=mysqli_query($conexion,"select correo from profesional
                         where ID='$id'") or
@@ -43,16 +29,6 @@ if ($reg=mysqli_fetch_array($registros))
 	<h1 align="center">Formulario de Contrato</h1><br>
 	<form action="contratar1.php?idreceptor=<?php echo $id ;?>" method="post">
 
-	<h4 align="center">Es necesario que inicies sesion para este paso</h4>
-
-	<label class="mr-sm-2">Correo Personal:</label>
-	<input type="text" name="correo"  class="form-control mb-2 mr-sm-2"><br>
-
-	<label class="mr-sm-2">Contrasena:</label>
-	<input type="password" name="password"  class="form-control mb-2 mr-sm-2"><br>
-
-	<h4 align="center">Danos mas informacion sobre el trabajo!</h4>
-
 	<label class="mr-sm-2">Correo Receptor:</label>
 	<input type="text" name="correoreceptor"  class="form-control mb-2 mr-sm-2" readonly="readonly" value="<?php echo $reg['correo'] ?>"><br>
 
@@ -63,7 +39,9 @@ if ($reg=mysqli_fetch_array($registros))
 	<input type="text" name="descripcion" class="form-control mb-2 mr-sm-2"><br>
 
 	<br>
-	<input type="submit" class="enviar" value="Enviar Informacion" align="center" class="btn btn-primary mb-2">
+	<div align="center" class="center">
+	<input type="submit" class="enviar btn btn-primary " value="Enviar Informacion" class="btn btn-primary mb-2">
+</div>
 	</form>
 </div>
 		</section>
