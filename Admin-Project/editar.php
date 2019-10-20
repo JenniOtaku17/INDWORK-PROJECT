@@ -23,7 +23,7 @@ include ('conexion.php');
 
 //error_reporting(0);
 
-$id= $_SESSION['id'];
+$id= $_SESSION['user'];
 ?>
 
 <br>
@@ -33,7 +33,7 @@ $id= $_SESSION['id'];
 
 
 if( empty($id)){
-	echo "<script> alertify.alert('INDWORK aviso','Debes iniciar sesion para tener acceso a esta pagina!', function(){ alertify.message('OK'); window.location= 'iniciarseccion.html'; }); </script>";
+	echo "<script> alertify.alert('INDWORK aviso','Debes iniciar sesion para tener acceso a esta pagina!', function(){ alertify.message('OK'); window.location= 'iniciarseccion.php'; }); </script>";
 
 }
 else{
@@ -183,7 +183,7 @@ if ($reg=mysqli_fetch_array($registros))
 
 	</div>
       <div class="modal-footer">
-      <a href="editarinfopro.php?id=<?php echo $id ?>"><button class="btn btn-primary">GuardarCambios</button></a>
+      <button class="btn btn-primary">GuardarCambios</button>
 </form>
 	</div>
     </div>

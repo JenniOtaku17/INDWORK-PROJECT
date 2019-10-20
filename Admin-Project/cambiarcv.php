@@ -13,7 +13,7 @@
 <body>
     <?php
 session_start();
-$id= $_SESSION['id'];
+$id= $_SESSION['user'];
 
 include ('conexion.php');
 

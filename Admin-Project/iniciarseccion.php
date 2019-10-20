@@ -22,6 +22,18 @@
 	
   <!-----------------Navigation------------------->
 <?php
+error_reporting(0);
+
+include ('conexion.php');
+session_start();
+$registros=mysqli_query($conexion,"select ID, CEDULA,NOMBRE,CV,FOTO,PASSWORD,OFICIO,APELLIDO,TELEFONO,DIRECCION,REGION,PAIS,ME from PROFESIONAL where CORREO ='$_REQUEST[correo]' or ID= '$_SESSION[user]'") or
+  die("Problemas en el select:".mysqli_error($conexion));
+
+while ($reg=mysqli_fetch_array($registros))
+{
+	
+	$_SESSION['user']= $reg['ID'];
+	$id= $reg['ID'];
 	include ('navbar.php');
 ?>
 
@@ -37,21 +49,10 @@
 
 <?php
 
-error_reporting(0);
 
-include ('conexion.php');
-
-$registros=mysqli_query($conexion,"select ID, CEDULA,NOMBRE,CV,FOTO,PASSWORD,OFICIO,APELLIDO,TELEFONO,DIRECCION,REGION,PAIS,ME from PROFESIONAL where CORREO ='$_REQUEST[correo]' or ID= '$_SESSION[id]'") or
-  die("Problemas en el select:".mysqli_error($conexion));
-
-while ($reg=mysqli_fetch_array($registros))
-{
-	$_SESSION['id']= $reg['ID'];
-
-	$id= $reg['ID'];
 	include ('notificaciones.php');
 	echo "<span class='badge'>$count</span>";
-	if($_REQUEST['password']== $reg['PASSWORD'] or  isset($_SESSION['id'])){
+	if($_REQUEST['password']== $reg['PASSWORD'] or  isset($_SESSION['user'])){
 
 	echo "<script>swal('Bienvenid@ a tu Perfil ".$reg['NOMBRE']."');</script>";
 	echo '<div class="container">
@@ -101,7 +102,7 @@ while ($reg=mysqli_fetch_array($registros))
 
 	}else{
 
-		echo "<script> alertify.alert('INDWORK aviso','No fue posible iniciar sesion, verifica los datos!', function(){ alertify.message('OK'); window.location= 'iniciarseccion.html'; }); </script>";
+		echo "<script> alertify.alert('INDWORK aviso','No fue posible iniciar sesion, verifica los datos!', function(){ alertify.message('OK'); window.location= 'iniciarsesion.php'; }); </script>";
 
 	}
 

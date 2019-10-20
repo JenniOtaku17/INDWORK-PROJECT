@@ -13,13 +13,14 @@
 <body>
     <?php
 session_start();
-$id= $_SESSION['id'];
+$id= $_SESSION['user'];
 
 include ('conexion.php');
 
 if(isset($id)){
-    mysqli_query($conexion,"update PROFESIONAL
-                  SET OFICIO='$_REQUEST[oficio]' and ME='$_REQUEST[me]'  where ID =$id ") or
+    mysqli_query($conexion,"update PROFESIONAL(OFICIO,ME)
+                            SET OFICIO='$_REQUEST[oficio]',
+                            ME='$_REQUEST[me]'  where ID =$id ") or
     die("Problemas en el select:".mysqli_error($conexion));
 
     echo "<script> alertify.alert('INDWORK aviso','Datos Actualizados Exitosamente!',

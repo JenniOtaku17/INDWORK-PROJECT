@@ -13,17 +13,16 @@
 <body>
     <?php
 session_start();
-$id= $_SESSION['id'];
-
 include ('conexion.php');
+$id= $_SESSION['user'];
+$nombre = $_POST['nombre'];
+echo $nombre;
+
 
 if(isset($id)){
 mysqli_query($conexion,"update PROFESIONAL
-              SET NOMBRE='$_REQUEST[nombre]',
-              APELLIDO='$_REQUEST[apellido]',
-              CEDULA='$_REQUEST[cedula]',
-              TELEFONO='$_REQUEST[telefono]'
-               where ID =$id ") or
+              SET NOMBRE= '$nombre'
+               where ID = $id") or
 die("Problemas en el select:".mysqli_error($conexion));
 
 echo "<script> alertify.alert('INDWORK aviso','Datos Actualizados Exitosamente!',

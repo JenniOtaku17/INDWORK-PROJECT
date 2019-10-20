@@ -17,14 +17,23 @@
 <body>
 
 <?php
-	include ('navbar.php');
+error_reporting(0);
+    include ('navbar.php');
+    
 ?>
 
 <br>
 
 <!--------------------Container------------------------>
+<?php
+session_start();
 
-<section class="container">
+if(isset($_SESSION['user'])){
+
+    echo "<script>  window.location= 'iniciarseccion.php'; </script>";
+}else{
+    
+    echo '<section class="container">
 	<div class="d-flex justify-content-center">
   <div class="error-message"><?php if(isset($message)) { echo $message; } ?></div>
 	<div class="form-group w-75">
@@ -38,7 +47,7 @@
     <label><i class="fas fa-user"></i> Correo</label>
   </div>
   <div class="group">
-    <input type="password" name="password" onclick= 'none'><span class="highlight" required></span><span class="bar"></span>
+    <input type="password" name="password" onclick= "none"><span class="highlight" required></span><span class="bar"></span>
     <label><i class="fas fa-unlock"></i> Contraseña</label>
   </div>
   
@@ -48,11 +57,14 @@
   <div class="sign-up">
      No tienes una cuenta? <a href="resgistrar.html">Registrate</a>
   </div>
-  
   </form>
   </div>
   </div>
-</section>
+</section>';
+
+}
+
+?>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

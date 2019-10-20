@@ -40,7 +40,7 @@
 	  copy($ruta, $destino);
   }
 
-  include ('conexion.php');
+include ('conexion.php');
 
     if ($_REQUEST['password']== $_REQUEST['repassword']){
 try{

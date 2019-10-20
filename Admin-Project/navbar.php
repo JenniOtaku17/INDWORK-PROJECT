@@ -14,8 +14,8 @@
 
 <?php
 session_start();
-if(isset($_SESSION['id'])){
-  $id = $_SESSION['id'];
+if(isset($_SESSION['user'])){
+  $id = $_SESSION['user'];
 
   include ('conexion.php');
 
@@ -58,7 +58,7 @@ if(isset($_SESSION['id'])){
     <img src="img/logo.png" height="50px" width="220px">
     <ul class="navbar nav justify-content-end text-white">
         <li class="nav-item">
-            <a class="nav-link" href="iniciarseccion.html">Iniciar Sesion</a>
+            <a class="nav-link" href="iniciarsesion.php">Iniciar Sesion</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="registrar.php">Registrarse</a>

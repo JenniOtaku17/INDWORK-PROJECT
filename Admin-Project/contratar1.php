@@ -24,9 +24,9 @@
 
   include ('conexion.php');
 
-  if(isset($_SESSION['id'])){
+  if(isset($_SESSION['user'])){
 
-  $id = $_SESSION['id'];
+  $id = $_SESSION['user'];
         mysqli_query($conexion,"insert into contratos (ID_EMISOR,ID_RECEPTOR,DESCRIPCION,ASUNTO) values($id,$idreceptor,'$_REQUEST[descripcion]', '$_REQUEST[asunto]')")
           or die("Problemas en el select".mysqli_error($conexion));
 
