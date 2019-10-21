@@ -15,13 +15,17 @@
 session_start();
 include ('conexion.php');
 $id= $_SESSION['user'];
-$nombre = $_POST['nombre'];
-echo $nombre;
+$nombre = $_REQUEST['nombre'];
+$apellido = $_REQUEST['apellido'];
+$cedula = $_REQUEST['cedula'];
+$telefono = $_REQUEST['telefono'];
 
-
-if(isset($id)){
+if(isset($id) and isset($_REQUEST['nombre']) and isset($_REQUEST['apellido']) and isset($_REQUEST['cedula']) and isset($_REQUEST['telefono'])){
 mysqli_query($conexion,"update PROFESIONAL
-              SET NOMBRE= '$nombre'
+              SET NOMBRE= '$nombre',
+                  APELLIDO = '$apellido',
+                  CEDULA = '$cedula',
+                  TELEFONO = '$telefono'
                where ID = $id") or
 die("Problemas en el select:".mysqli_error($conexion));
 

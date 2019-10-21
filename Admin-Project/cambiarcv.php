@@ -17,15 +17,16 @@ $id= $_SESSION['user'];
 
 include ('conexion.php');
 
-if(isset($id)){
 $nombre = $_FILES['cv']['name'];
 $tipo = $_FILES['cv']['type'];
 $tamaño = $_FILES['cv']['size'];
 $ruta = $_FILES['cv']['tmp_name'];
 $destino = "cvs/".$nombre;
 
+if(isset($id) and isset($nombre)){
+
 mysqli_query($conexion,"update PROFESIONAL
-              SET cv= $nombre
+              SET CV= '$nombre'
                where ID =$id ") or
 die("Problemas en el select:".mysqli_error($conexion));
 

@@ -55,12 +55,12 @@ mysqli_query($conexion,"insert into profesional (NOMBRE,APELLIDO,CEDULA,OFICIO,T
   //mail($correo, $asunto , $mensaje);
 
 mysqli_close($conexion);
-  echo "<script> alertify.alert('INDWORK aviso','Usuario registrado Exitosamente!', function(){ alertify.message('OK'); window.location= 'iniciarseccion.html'; }); </script>";
+  echo "<script> alertify.alert('INDWORK aviso','Usuario registrado Exitosamente!', function(){ alertify.message('OK'); window.location= 'iniciarsesion.php'; }); </script>";
 }catch(Exception $e)
 {
-	echo "<script> alertify.alert('INDWORK aviso','Error al registrar usuario!', function(){ alertify.message('OK'); window.location= 'resgistrar.html'; }); </script>";
+	echo "<script> alertify.alert('INDWORK aviso','Error al registrar usuario!', function(){ alertify.message('OK'); window.location= 'registrar.php'; }); </script>";
 }}else{
-  echo "<script> alertify.alert('INDWORK aviso','Error al registrar usuario!', function(){ alertify.message('OK'); window.location= 'resgistrar.html'; }); </script>";
+  echo "<script> alertify.alert('INDWORK aviso','Error al registrar usuario!', function(){ alertify.message('OK'); window.location= 'registrar.php'; }); </script>";
 }
 
 ?>

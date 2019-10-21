@@ -28,18 +28,30 @@ include ('conexion.php');
 $registros=mysqli_query($conexion,"select NOMBRE,APELLIDO,OFICIO,FOTO, ID from PROFESIONAL where OFICIO ='$_REQUEST[op]' or NOMBRE ='$_REQUEST[op]' or REGION ='$_REQUEST[op]'") or
   die("Problemas en el select:".mysqli_error($conexion));
 
-echo '<div class="container">
-<table class="table tabla">
-<thead class="thead-light encabezado">
-    <tr>
-      
-    </tr>
-  </thead>';
+
 
 while ($reg=mysqli_fetch_array($registros))
 {
-  if(isset($reg) and !empty($reg) ){
-    echo '
+  if(is_null($reg['ID'])){
+    echo "
+    <script> 
+    alertify
+      .alert('INDWORK aviso','No se han encontrado coincidencias', function(){
+        alertify.message('OK');
+        window.location= 'buscar.php';
+      });
+     </script>";
+    
+}
+
+else{
+     echo '<div class="container">
+    <table class="table tabla">
+    <thead class="thead-light encabezado">
+        <tr>
+          
+        </tr>
+      </thead>
 	<tbody>
     <tr>
     <div  class="container">
@@ -64,18 +76,6 @@ while ($reg=mysqli_fetch_array($registros))
     </div>
 	</div>
 	</tr></tbody></table></div>';
-    
-}
-
-else{
-    echo "
-    <script> 
-    alertify
-      .alert('INDWORK aviso','No se han encontrado coincidencias', function(){
-        alertify.message('OK');
-        window.location= 'buscar.html';
-      });
-     </script>";
   
 }}
 ?>

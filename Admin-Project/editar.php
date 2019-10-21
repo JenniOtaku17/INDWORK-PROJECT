@@ -33,7 +33,7 @@ $id= $_SESSION['user'];
 
 
 if( empty($id)){
-	echo "<script> alertify.alert('INDWORK aviso','Debes iniciar sesion para tener acceso a esta pagina!', function(){ alertify.message('OK'); window.location= 'iniciarseccion.php'; }); </script>";
+	echo "<script> alertify.alert('INDWORK aviso','Debes iniciar sesion para tener acceso a esta pagina!', function(){ alertify.message('OK'); window.location= 'iniciarsesion.php'; }); </script>";
 
 }
 else{

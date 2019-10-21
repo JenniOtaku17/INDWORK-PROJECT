@@ -17,7 +17,7 @@ $id= $_SESSION['user'];
 
 include ('conexion.php');
 
-if(isset($id)){
+if(isset($id) and isset($_REQUEST['correo'])){
     mysqli_query($conexion,"update PROFESIONAL
                   SET CORREO='$_REQUEST[correo]'
                    where ID =$id ") or

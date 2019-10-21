@@ -17,8 +17,8 @@ $id= $_SESSION['user'];
 
 include ('conexion.php');
 
-if(isset($id)){
-    mysqli_query($conexion,"update PROFESIONAL(OFICIO,ME)
+if(isset($id) and isset($_REQUEST['oficio']) and isset($_REQUEST['me'])){
+    mysqli_query($conexion,"update PROFESIONAL
                             SET OFICIO='$_REQUEST[oficio]',
                             ME='$_REQUEST[me]'  where ID =$id ") or
     die("Problemas en el select:".mysqli_error($conexion));

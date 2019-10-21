@@ -17,7 +17,7 @@ $id= $_SESSION['user'];
 
 include ('conexion.php');
 
-if(isset($id)){
+if(isset($id) and isset($_REQUEST['pais']) and isset($_REQUEST['region']) and isset($_REQUEST['direccion'])){
     mysqli_query($conexion,"update PROFESIONAL
                   SET PAIS='$_REQUEST[pais]',
                   REGION='$_REQUEST[region]',
