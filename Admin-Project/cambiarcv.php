@@ -24,6 +24,7 @@ $ruta = $_FILES['cv']['tmp_name'];
 $destino = "cvs/".$nombre;
 
 if(isset($id) and isset($nombre)){
+    copy($ruta, $destino);
 
 mysqli_query($conexion,"update PROFESIONAL
               SET CV= '$nombre'
