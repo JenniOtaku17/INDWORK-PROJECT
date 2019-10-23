@@ -6,8 +6,8 @@
 <meta http-equiv="x-ua-compatible" content="ie-edge">
 <link rel="shortcut icon" href="icono.png" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="css/contratar.css" />
-<title>Inicio</title>
+<link rel="stylesheet" href="css/calificar.css" />
+<title>Calificar</title>
 </head>
 
 <body>
@@ -15,43 +15,42 @@
 <?php
 include ('navbar.php');
 
-$id = $_GET['id'];
-include ('conexion.php');
+$id_re = $_GET['id_re'];
 
-$registros=mysqli_query($conexion,"select correo from profesional
-                        where ID='$id'") or
-  die("Problemas en el select:".mysqli_error($conexion));
-if ($reg=mysqli_fetch_array($registros))
-{
 ?>
+
 <section class="container">
 	<div class="form-group w-75">
     <br>
     <br>
-	<h1 align="center">Formulario de Contrato</h1><br>
-	<form action="contratar1.php?idreceptor=<?php echo $id ;?>" method="post">
+	<h1 align="center">Calificar</h1><br>
+	<form action="calificar1.php?idreceptor='<?= $id_re;?>'" method="post">
 
-	<label class="mr-sm-2">Correo Receptor:</label>
-	<input type="text" name="correoreceptor"  class="form-control mb-2 mr-sm-2" readonly="readonly" value="<?php echo $reg['correo'] ?>"><br>
-
-	<label class="mr-sm-2">Desarrollo del asunto:</label>
-	<input type="text" name="asunto"  class="form-control mb-2 mr-sm-2"><br>
-
-	<label class="mr-sm-2">Descripcion del trabajo:</label>
-	<input type="text" name="descripcion" class="form-control mb-2 mr-sm-2"><br>
+<br>
+    <div class="clasificacion">
+          <input id="radio1" type="radio" name="estrellas" value="5">
+          <label for="radio1">★</label>
+          <input id="radio2" type="radio" name="estrellas" value="4">
+          <label for="radio2">★</label>
+          <input id="radio3" type="radio" name="estrellas" value="3">
+          <label for="radio3">★</label>
+          <input id="radio4" type="radio" name="estrellas" value="2">
+          <label for="radio4">★</label>
+          <input id="radio5" type="radio" name="estrellas" value="1">
+          <label for="radio5">★</label>
+        </div>
+<br>
+	<label class="mr-sm-2">Comentario:</label>
+	<textarea rows="4" name="descripcion" class="form-control mb-2 mr-sm-2"></textarea><br>
 
 	<br>
 	<div align="center" class="center">
-	<input type="submit" class="enviar btn btn-primary " value="Enviar Informacion" class="btn btn-primary mb-2">
-</div>
+	<input type="submit" class="enviar btn btn-primary " value="Listo" class="btn btn-primary mb-2">
+  </div>
 	</form>
-</div>
-		</section>
-<?php
-}else{
-	echo "Verifica los datos";
-}
-?>
+  </div>
+</section>
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

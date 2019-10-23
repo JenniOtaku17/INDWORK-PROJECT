@@ -19,7 +19,7 @@
 </head>
 
 <body>
-	
+
   <!-----------------Navigation------------------->
 <?php
 	include ('navbar.php');
@@ -84,19 +84,93 @@ while ($reg=mysqli_fetch_array($registros))
 		<div class="espacio-editar">
 			<a href = "archivo.php?id='.$id.'" target = "_blank" class="nav-link boton editar">Curriculum</a>
 			<a href = "contratar.php?id='.$id.'" target = "_blank" class="nav-link boton editar">Contratar</a>
+
 		</div>
 	</div>
 </div>
 
-		
-		
+
+
 	    </div>';
 
-	}else{
+	}
+
+	
+	
+	
+	
+	
+	else{
 
 		echo "<script> alertify.alert('INDWORK aviso','No fue posible iniciar sesion, verifica los datos!', function(){ alertify.message('OK'); window.location= 'iniciarseccion.html'; }); </script>";
 
 	}
+
+	//<section class="container" align="center">
+    //<h1>Comentarios</h1><br>
+
+
+	$calificacion=mysqli_query($conexion,"select p.NOMBRE,p.APELLIDO,p.FOTO,p.ID,e.COMENTARIO,e.FECHA,e.ESTRELLAS
+	 from PROFESIONAL p inner join evaluacion e 
+	 on e.ID_EMISOR = p.ID
+	 where ID_RECEPTOR = '$id'") or
+	  die("Problemas en el select:".mysqli_error($conexion));
+
+
+
+while ($reg=mysqli_fetch_array($calificacion))
+{
+  if(is_null($reg['ID'])){
+    echo "
+    <script> 
+    alertify
+      .alert('INDWORK aviso','No se han encontrado coincidencias', function(){
+        alertify.message('OK');
+        window.location= 'buscar.php';
+      });
+     </script>";
+    
+}
+
+else{
+     echo '<div class="container">
+    <table class="table tabla">
+    <thead class="thead-light encabezado">
+        <tr>
+          
+        </tr>
+      </thead>
+	<tbody>
+    <tr>
+    <div  class="container">
+    
+    <div class="cuadro">
+		<div class="cuadro-izquierda ">
+      <a href="perfil.php?id='.$reg['ID'].'">
+      <img  class="foto" src="data:image/jpg;base64,'.base64_encode($reg['FOTO']).'" alt="">
+      </a>
+		</div>
+		<div class="cuadro-derecha ">
+			<div>
+				<p class="nombre-perfil" >'.$reg['NOMBRE'].' '.$reg['APELLIDO'].'</p>
+			</div>
+			<div>
+				<p class="Comentario">'.$reg['COMENTARIO'].'</p>
+			</div>
+			<div>
+			<p class="Fecha">'.$reg['FECHA'].'</p>
+		</div>
+		<div>
+		<p class="Estrellas">'.$reg['ESTRELLAS'].'</p>
+	</div>
+
+    </div>
+    </div>
+	</div>
+	</tr></tbody></table></div>';
+  
+}}
+
 
 }
 
