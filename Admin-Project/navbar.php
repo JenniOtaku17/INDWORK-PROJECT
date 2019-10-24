@@ -3,6 +3,7 @@
 <head>
 <link rel="shortcut icon" href="#" />
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+<link rel="stylesheet" href="css/nav.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css"/>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.min.css"/>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.min.css"/>
@@ -30,6 +31,12 @@ if(isset($_SESSION['user'])){
         echo "<nav class='navbar navbar-default bg-dark' width='100%'>
         <img src='img/logo.png' height='50px' width=220px'>
         <ul class='navbar nav justify-content-end text-white'>
+            
+            <li class='nav-item '>
+                
+                    <a class='nav-link perfil-nav' href='Iniciarseccion.php'><img class='foto-nav' src='data:image/jpg;base64,".base64_encode($foto)."'>{$us['NOMBRE']} {$us['APELLIDO']}</a>
+                           
+                </li>
             <li class='nav-item'>
                 <a class='nav-link' href='buscar.php'>Buscar</a>
             </li>
@@ -37,13 +44,7 @@ if(isset($_SESSION['user'])){
                 <a class='nav-link' href='inicio.html'>Inicio</a>
             </li>
 
-            <li class='nav-item'>
-                <a class='nav-link' href='Iniciarseccion.php'>{$us['NOMBRE']} {$us['APELLIDO']}</a>
-            </li>
-
-            <li class='nav-item'>
-                <a class='nav-link' href='Iniciarseccion.php'></a>
-            </li>
+            
 
             <li class='nav-item'>
                 <a class='nav-link' href='cerrarsession.php'>Cerrar Sesion</a>

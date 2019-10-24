@@ -1,0 +1,32 @@
+.form-group {
+  display: inline-block;
+  align-items: center;
+  position:center;
+  margin-right: 150px;
+  margin-left: 150px;
+  justify-content: center;
+  min-height: 100vh;
+}
+.clasificacion {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 50px;
+    position: center;
+  }
+
+  .clasificacion input {
+    position: absolute;
+    top: -100px;
+  }
+
+  .clasificacion label {
+    float: right;
+    color: #333;
+  }
+
+  .clasificacion label:hover,
+  .clasificacion label:hover ~ label,
+  .clasificacion input:checked ~ label {
+    color: #dd4;
+  }

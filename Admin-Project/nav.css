@@ -1,0 +1,20 @@
+.foto-nav {
+    width: 100%;
+    max-width: 40px;
+    clip-path: circle(40% at 50% 50%);
+    margin-right: 7px;
+}
+
+.perfil-nav {
+    padding: 0px 10px;
+    background-color: #169BD5;
+    border-radius: 80px;
+    color: azure;
+    transition-duration: 0.3s;
+}
+
+.perfil-nav:hover {
+    background-color: azure;
+    color: black;
+    transition-duration: 0.5s;
+}

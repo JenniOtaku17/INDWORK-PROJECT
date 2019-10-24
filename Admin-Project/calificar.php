@@ -14,8 +14,9 @@
 
 <?php
 include ('navbar.php');
-
-$id_re = $_GET['id_re'];
+if(isset($_GET['id_re'])){
+  $id_re = $_GET['id_re'];
+}
 
 ?>
 
