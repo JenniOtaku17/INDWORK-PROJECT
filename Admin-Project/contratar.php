@@ -21,6 +21,7 @@ include ('conexion.php');
 $registros=mysqli_query($conexion,"select correo from profesional
                         where ID='$id'") or
   die("Problemas en el select:".mysqli_error($conexion));
+if(isset($_SESSION['user'])){
 if ($reg=mysqli_fetch_array($registros))
 {
 ?>
@@ -50,6 +51,9 @@ if ($reg=mysqli_fetch_array($registros))
 <?php
 }else{
 	echo "Verifica los datos";
+}}else{
+	echo "<script> alertify.alert('INDWORK aviso','Necesitas estar logeado para acceder a esta funcion!',
+          function(){ alertify.message('OK'); window.location= 'iniciarsesion.php'; }); </script>";
 }
 ?>
 
