@@ -15,7 +15,6 @@
 <?php
 include ('navbar.php');
 if(isset($_GET['id_re'])){
-  $id_re = $_GET['id_re'];
 }
 
 ?>
@@ -25,28 +24,28 @@ if(isset($_GET['id_re'])){
     <br>
     <br>
 	<h1 align="center">Calificar</h1><br>
-	<form action="calificar1.php?idreceptor='<?= $id_re;?>'" method="post">
+	<form action="calificar1.php?idreceptor=<?php echo $id ;?>" method="post">
 
 <br>
     <div class="clasificacion">
-          <input id="radio1" type="radio" name="estrellas" value="5">
+          <input id="radio1" type="radio" name="estrellas" value="★★★★★">
           <label for="radio1">★</label>
-          <input id="radio2" type="radio" name="estrellas" value="4">
+          <input id="radio2" type="radio" name="estrellas" value="★★★★">
           <label for="radio2">★</label>
-          <input id="radio3" type="radio" name="estrellas" value="3">
+          <input id="radio3" type="radio" name="estrellas" value="★★★">
           <label for="radio3">★</label>
-          <input id="radio4" type="radio" name="estrellas" value="2">
+          <input id="radio4" type="radio" name="estrellas" value="★★">
           <label for="radio4">★</label>
-          <input id="radio5" type="radio" name="estrellas" value="1">
+          <input id="radio5" type="radio" name="estrellas" value="★">
           <label for="radio5">★</label>
         </div>
 <br>
 	<label class="mr-sm-2">Comentario:</label>
-	<textarea rows="4" name="descripcion" class="form-control mb-2 mr-sm-2"></textarea><br>
+	<textarea rows="4" name="comentario" class="form-control mb-2 mr-sm-2"></textarea><br>
 
 	<br>
 	<div align="center" class="center">
-	<input type="submit" class="enviar btn btn-primary " value="Listo" class="btn btn-primary mb-2">
+	<input type="submit" class="enviar btn btn-primary " value="Enviar" class="btn btn-primary mb-2">
   </div>
 	</form>
   </div>

@@ -24,22 +24,22 @@
 
   include ('conexion.php');
 
-  $fecha = getdate();
 
   if(isset($_SESSION['user'])){
   $id = $_SESSION['user'];
+  mysqli_set_charset($conexion,'utf8');
+
         mysqli_query($conexion,"insert into evaluacion (ID_EMISOR,ID_RECEPTOR,COMENTARIO,ESTRELLAS) values ($id,$idreceptor,'$_REQUEST[comentario]','$_REQUEST[estrellas]')")
           or die("Problemas en el select".mysqli_error($conexion));
 
           echo "<script> alertify.alert('INDWORK aviso','Calificación enviada exitosamente!',
-          function(){ alertify.message('OK'); window.location= 'calificar.php?id=".$idreceptor."'; }); </script>";
+          function(){ alertify.message('OK'); window.location= 'iniciarseccion.php?id=".$id."'; }); </script>";
          }
          else{
              echo "<script> alertify.alert('INDWORK aviso','Error al calificar!',
           function(){ alertify.message('OK'); window.location= 'calificar.php?id=".$idreceptor."'; }); </script>";
          }
          
-  //var_dump($idreceptor);
 
 
 ?>

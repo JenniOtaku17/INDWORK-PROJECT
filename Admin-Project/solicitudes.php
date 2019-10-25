@@ -28,11 +28,10 @@ include ('conexion.php');
     function(){ alertify.message('OK'); window.location= 'iniciarseccion.php?id=".$id."'; }); </script>";
 
         }
-        $fecha = mysqli_query($conexion,"select CURRENT_TIMESTAMP") or
-        die("Problemas en el select:".mysqli_error($conexion));
+        $fecha = date('Y-m-d H:i:s');
 
     if($estado == 'terminar'){
-      $registrost=mysqli_query($conexion,"Update contratos set ESTADO = 'Terminado' and set FECHA_FIN = $fecha  where ID= '$_GET[id]' ") or
+      $registrost=mysqli_query($conexion,"Update contratos set ESTADO = 'Terminado',FECHA_FIN = '$fecha'  where ID= '$_GET[id]' ") or
         die("Problemas en el select:".mysqli_error($conexion));
       
         echo "<script> alertify.alert('INDWORK aviso','Trabajo terminado!',

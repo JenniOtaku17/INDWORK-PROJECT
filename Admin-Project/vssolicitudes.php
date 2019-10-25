@@ -152,7 +152,7 @@ echo"
 
 <tbody>
 <?php 
-
+mysqli_set_charset($conexion,'utf8');
 $rg=mysqli_query($conexion,"Select c.ID, c.ID_EMISOR,c.FECHA_INICIO,c.FECHA_FIN, p.NOMBRE , p.APELLIDO, c.DESCRIPCION, c.ASUNTO
 From contratos c inner join profesional p
 On c.ID_EMISOR = p.ID
@@ -209,10 +209,11 @@ echo"
 <?php 
 include ('conexion.php');
 
+mysqli_set_charset($conexion,'utf8');
 $registrost=mysqli_query($conexion,"Select c.ID,c.ID_RECEPTOR, c.ID_EMISOR, p.NOMBRE , p.APELLIDO, c.DESCRIPCION, c.ASUNTO
 From contratos c inner join profesional p
 On c.ID_RECEPTOR = p.ID
- where ID_EMISOR = '$id' and FECHA_FIN != ' ' and ESTADO = 'visto' ") or
+ where ID_EMISOR = '$id' and FECHA_FIN != ' ' and ESTADO = 'Terminado' ") or
   die("Problemas en el select:".mysqli_error($conexion));
 
 
@@ -269,6 +270,7 @@ echo"
 <?php 
 include ('conexion.php');
 
+mysqli_set_charset($conexion,'utf8');
 $calificacion=mysqli_query($conexion,"select p.NOMBRE,p.APELLIDO,p.FOTO,p.ID,e.COMENTARIO,e.FECHA,e.ESTRELLAS
 from PROFESIONAL p inner join evaluacion e 
 on e.ID_EMISOR = p.ID

@@ -106,10 +106,9 @@ while ($reg=mysqli_fetch_array($registros))
 
 	}
 
-	//<section class="container" align="center">
-    //<h1>Comentarios</h1><br>
+    echo "<h1>Comentarios</h1>";
 
-
+    mysqli_set_charset($conexion,'utf8');
 	$calificacion=mysqli_query($conexion,"select p.NOMBRE,p.APELLIDO,p.FOTO,p.ID,e.COMENTARIO,e.FECHA,e.ESTRELLAS
 	 from PROFESIONAL p inner join evaluacion e 
 	 on e.ID_EMISOR = p.ID
@@ -119,20 +118,6 @@ while ($reg=mysqli_fetch_array($registros))
 
 
 while ($reg=mysqli_fetch_array($calificacion))
-{
-  if(is_null($reg['ID'])){
-    echo "
-    <script> 
-    alertify
-      .alert('INDWORK aviso','No se han encontrado coincidencias', function(){
-        alertify.message('OK');
-        window.location= 'buscar.php';
-      });
-     </script>";
-    
-}
-
-else{
      echo '<div class="container">
     <table class="table tabla">
     <thead class="thead-light encabezado">
@@ -168,9 +153,6 @@ else{
     </div>
 	</div>
 	</tr></tbody></table></div>';
-  
-}}
-
 
 }
 
