@@ -106,7 +106,9 @@ while ($reg=mysqli_fetch_array($registros))
 
 	}
 
-    echo "<h1>Comentarios</h1>";
+	echo "<h1>Valoraciones</h1><br>
+	<br>";
+	
 
     mysqli_set_charset($conexion,'utf8');
 	$calificacion=mysqli_query($conexion,"select p.NOMBRE,p.APELLIDO,p.FOTO,p.ID,e.COMENTARIO,e.FECHA,e.ESTRELLAS
@@ -118,41 +120,18 @@ while ($reg=mysqli_fetch_array($registros))
 
 
 while ($reg=mysqli_fetch_array($calificacion))
-     echo '<div class="container">
-    <table class="table tabla">
-    <thead class="thead-light encabezado">
-        <tr>
-          
-        </tr>
-      </thead>
-	<tbody>
-    <tr>
-    <div  class="container">
-    
-    <div class="cuadro">
-		<div class="cuadro-izquierda ">
-      <a href="perfil.php?id='.$reg['ID'].'">
-      <img  class="foto" src="data:image/jpg;base64,'.base64_encode($reg['FOTO']).'" alt="">
-      </a>
-		</div>
-		<div class="cuadro-derecha ">
-			<div>
-				<p class="nombre-perfil" >'.$reg['NOMBRE'].' '.$reg['APELLIDO'].'</p>
-			</div>
-			<div>
-				<p class="Comentario">'.$reg['COMENTARIO'].'</p>
-			</div>
-			<div>
-			<p class="Fecha">'.$reg['FECHA'].'</p>
-		</div>
-		<div>
-		<p class="Estrellas">'.$reg['ESTRELLAS'].'</p>
+	echo '
+	<div class="container" >
+	<div class="media border p-3">
+	<img class="mr-3 mt-3 rounded-circle" height="110px" width="100px" src="data:image/jpg;base64,'.base64_encode($reg['FOTO']).'" alt="">
+	<div class="media-body">
+		<h4>'.$reg['NOMBRE'].' '.$reg['APELLIDO'].' <small><i>'.' publicado en '.$reg['FECHA'].'</i></small></h4>
+		<p>'.$reg['COMENTARIO'].'</p>
+		<p class="Estrellas" > <h2> <font color="gold"> '.$reg['ESTRELLAS'].'</font></h2></p>
 	</div>
-
-    </div>
-    </div>
-	</div>
-	</tr></tbody></table></div>';
+	</div><br>
+	</div>';
+	
 
 }
 

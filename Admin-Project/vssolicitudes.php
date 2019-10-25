@@ -242,67 +242,9 @@ echo"
 </div>
 </div>
 
-<!-------------------------------------->
-
-<div class="container">
-
- <button type="button" class="nav-link boton editar" data-toggle="collapse" data-target="#demo5">Calificaciones</button>
- <div id="demo5" class="collapse">
-	
-  <table class = 'table table-stripped'>
-
- <thead>
-
-<tr>
-
-<th>Usuario</th>
-<th>Fecha</th>
-<th>Comentario</th>
-<th>Calificacion</th>
 
 
-</tr>
 
-</thead>
-
-<tbody>
-
-<?php 
-include ('conexion.php');
-
-mysqli_set_charset($conexion,'utf8');
-$calificacion=mysqli_query($conexion,"select p.NOMBRE,p.APELLIDO,p.FOTO,p.ID,e.COMENTARIO,e.FECHA,e.ESTRELLAS
-from PROFESIONAL p inner join evaluacion e 
-on e.ID_EMISOR = p.ID
-where ID_RECEPTOR = '$id'") or
-  die("Problemas en el select:".mysqli_error($conexion));
-
-
-while($tr =mysqli_fetch_array($calificacion)){
-
-  $id_re = $tr['ID_RECEPTOR'];
-
-echo"
-
-<tr>
-
-<td>{$tr['NOMBRE']} {$tr['APELLIDO']}</td>
-<td>{$tr['FECHA']}</td>
-<td>{$tr['COMENTARIO']}</td>
-<td>{$tr['ESTRELLAS']}</td>
-
-
-</tr>";
-
-}
-
-?>
-
-</tbody>
-</table>
-
-</div>
-</div>
 
 
 </body>
