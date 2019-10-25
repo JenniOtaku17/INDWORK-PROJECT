@@ -29,6 +29,8 @@
   $id = $_SESSION['user'];
   mysqli_set_charset($conexion,'utf8');
 
+  
+
         mysqli_query($conexion,"insert into evaluacion (ID_EMISOR,ID_RECEPTOR,COMENTARIO,ESTRELLAS) values ($id,$idreceptor,'$_REQUEST[comentario]','$_REQUEST[estrellas]')")
           or die("Problemas en el select".mysqli_error($conexion));
 

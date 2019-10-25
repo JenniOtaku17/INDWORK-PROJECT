@@ -16,7 +16,7 @@
 include ('navbar.php');
 if(isset($_GET['id_re'])){
 }
-
+$id_re = $_GET['id_re']
 ?>
 
 <section class="container">
@@ -24,7 +24,7 @@ if(isset($_GET['id_re'])){
     <br>
     <br>
 	<h1 align="center">Calificar</h1><br>
-	<form action="calificar1.php?idreceptor=<?php echo $id ;?>" method="post">
+	<form action="calificar1.php?idreceptor=<?php echo $id_re ;?>" method="post">
 
 <br>
     <div class="clasificacion">
