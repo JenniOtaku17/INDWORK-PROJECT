@@ -20,7 +20,7 @@ echo "
 alertify
   .alert('INDWORK aviso','Acabas de cerrar sesion', function(){
     alertify.message('OK');
-    window.location= 'inicio.html';
+    window.location= 'inicio.php';
   });
  </script>";
 ?>

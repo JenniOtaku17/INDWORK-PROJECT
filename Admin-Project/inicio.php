@@ -9,21 +9,12 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Inicio | INDWORK</title>
+    <?php
+        include ('navbar.php');
+    ?>
 </head>
 
 <body>
-
-    <!-----------------Navigation------------------->
-
-    <nav class="navbar navbar-default fixed-top bg-dark menu" width="100%">
-        <img src="img/logo.png" height="50px" width="220px" />
-        <ul class="navbar nav justify-content-end text-white">
-            <li class="nav-item">
-                <a class="nav-link boton" href="iniciarsesion.php">Iniciar Sesion</a>
-            </li>
-
-        </ul>
-    </nav>
 
     <!--------------------Container------------------------>
 
