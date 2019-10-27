@@ -19,6 +19,7 @@ if(isset($_SESSION['user'])){
   $id = $_SESSION['user'];
 
   include ('conexion.php');
+  
 
   $usuario=mysqli_query($conexion,"select NOMBRE, APELLIDO, FOTO FROM PROFESIONAL WHERE ID = $id ")or
   die("Problemas en el select:".mysqli_error($conexion));
@@ -36,7 +37,7 @@ if(isset($_SESSION['user'])){
                 
                     <a class='nav-link perfil-nav' href='Iniciarseccion.php'><img class='foto-nav' src='data:image/jpg;base64,".base64_encode($foto)."'>{$us['NOMBRE']} {$us['APELLIDO']}</a>
                            
-                </li>
+                </li>    
             <li class='nav-item'>
                 <a class='nav-link' href='buscar.php'>Buscar</a>
             </li>

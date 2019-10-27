@@ -14,7 +14,7 @@
 <div class="container">
 <h3>Haz clic para ver tus trabajos</h3>
 
- <button type="button" class="nav-link boton editar" data-toggle="collapse" data-target="#demo">Solicitudes de Trabajo</button>
+ <button type="button"  style="display: block; width: 100%;" class="nav-link boton editar" data-toggle="collapse" data-target="#demo">Solicitudes de Trabajo</button>
 <div id="demo" class="collapse">
 	
   <table class = 'table table-stripped'>
@@ -76,7 +76,7 @@ echo"
 
 <div class="container">
 
-  <button type="button" class="nav-link boton editar" data-toggle="collapse" data-target="#demo2">Trabajos en Progreso</button>
+  <button type="button"  style="display: block; width: 100%;"class="nav-link boton editar" data-toggle="collapse" data-target="#demo2">Trabajos en Progreso</button>
   <div id="demo2" class="collapse">
   <table class = 'table table-stripped'>
 
@@ -133,7 +133,7 @@ echo"
 </div>
 <div class="container">
   
-  <button type="button" class="nav-link boton editar" data-toggle="collapse" data-target="#demo3">Trabajos realizados</button>
+  <button type="button"  style="display: block; width: 100%;" class="nav-link boton editar" data-toggle="collapse" data-target="#demo3">Trabajos realizados</button>
   <div id="demo3" class="collapse">
   <table class = 'table table-stripped'>
 
@@ -186,7 +186,7 @@ echo"
 
 <div class="container">
 
- <button type="button" class="nav-link boton editar" data-toggle="collapse" data-target="#demo4">Trabajos recibidos</button>
+ <button type="button"  style="display: block; width: 100%;" class="nav-link boton editar" data-toggle="collapse" data-target="#demo4">Trabajos recibidos</button>
  <div id="demo4" class="collapse">
 	
   <table class = 'table table-stripped'>

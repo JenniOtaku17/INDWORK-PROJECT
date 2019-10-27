@@ -48,8 +48,6 @@ while ($reg=mysqli_fetch_array($registros))
 <?php
 
 
-	include ('notificaciones.php');
-	echo "<span class='badge'>$count</span>";
 	if($_REQUEST['password']== $reg['PASSWORD'] or  isset($_SESSION['user'])){
 
 	echo "<script>swal('Bienvenid@ a tu Perfil ".$reg['NOMBRE']."');</script>";
