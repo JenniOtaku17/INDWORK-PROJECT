@@ -28,16 +28,16 @@ $id_re = $_GET['id_re']
 
 <br>
     <div class="clasificacion">
-          <input id="radio1" type="radio" name="estrellas" value="★★★★★">
-          <label for="radio1">★</label>
+          <input id="radio1" type="radio" name="estrellas" value="★★★★★" >
+          <label for="radio1" style="cursor:pointer;" title="5 de 5">★</label>
           <input id="radio2" type="radio" name="estrellas" value="★★★★">
-          <label for="radio2">★</label>
+          <label for="radio2" style="cursor:pointer;" title="4 de 5">★</label>
           <input id="radio3" type="radio" name="estrellas" value="★★★">
-          <label for="radio3">★</label>
+          <label for="radio3" style="cursor:pointer;" title="3 de 5">★</label>
           <input id="radio4" type="radio" name="estrellas" value="★★">
-          <label for="radio4">★</label>
+          <label for="radio4" style="cursor:pointer;" title="2 de 5">★</label>
           <input id="radio5" type="radio" name="estrellas" value="★">
-          <label for="radio5">★</label>
+          <label for="radio5" style="cursor:pointer;" title="1 de 5">★</label>
         </div>
 <br>
 	<label class="mr-sm-2">Comentario:</label>
