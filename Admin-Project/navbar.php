@@ -8,6 +8,10 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.min.css"/>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.min.css"/>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.min.css"/>
+<link href="css/fontawesome.min.css" rel="stylesheet">
+<link href="fontawesome/css/brands.css" rel="stylesheet">
+<link href="fontawesome/css/solid.css" rel="stylesheet">
+
 <title>Perfil</title>
 </head>
 
@@ -19,6 +23,7 @@ if(isset($_SESSION['user'])){
   $id = $_SESSION['user'];
 
   include ('conexion.php');
+  include ('notificaciones.php');
   
 
   $usuario=mysqli_query($conexion,"select NOMBRE, APELLIDO, FOTO FROM PROFESIONAL WHERE ID = $id ")or
@@ -35,17 +40,18 @@ if(isset($_SESSION['user'])){
             
             <li class='nav-item '>
                 
-                    <a class='nav-link perfil-nav' href='Iniciarseccion.php'><img class='foto-nav' src='data:image/jpg;base64,".base64_encode($foto)."'>{$us['NOMBRE']} {$us['APELLIDO']}</a>
-                           
-                </li>    
+                <a class='nav-link perfil-nav' href='Iniciarseccion.php'><img class='foto-nav' src='data:image/jpg;base64,".base64_encode($foto)."'>{$us['NOMBRE']} {$us['APELLIDO']}</a>  
+                         
+            </li>
+            
+            <i class='fas fa-2x fa-bell icon-white badge'>$count</i>
+            
             <li class='nav-item'>
                 <a class='nav-link' href='buscar.php'>Buscar</a>
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='inicio.php'>Inicio</a>
             </li>
-
-            
 
             <li class='nav-item'>
                 <a class='nav-link' href='cerrarsession.php'>Cerrar Sesion</a>

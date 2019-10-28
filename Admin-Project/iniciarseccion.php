@@ -46,7 +46,7 @@ while ($reg=mysqli_fetch_array($registros))
 
 
 <?php
-
+    
 
 	if($_REQUEST['password']== $reg['PASSWORD'] or  isset($_SESSION['user'])){
 
