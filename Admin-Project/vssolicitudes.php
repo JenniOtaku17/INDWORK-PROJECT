@@ -1,24 +1,124 @@
-<!doctype html>
+<!--<!doctype html>
 <html>
 <head>
-<link rel="shortcut icon" href="#" />
+<link rel="shortcut icon" href="#" />-->
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+<link rel="stylesheet" href="css/perfil.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css"/>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.min.css"/>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.min.css"/>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.min.css"/>
-<title>Perfil</title>
+<!--<title>Perfil</title>
 </head>
 
-<body>
+<body>-->
+
+
+<style>
+
+/*.wrap{
+	width: 100%;
+	max-width: 90%;
+	margin: 30px auto;
+}*/
+
+
+ul.tabs{
+	width: 100%;
+	background: #363636;
+	list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+ul.tabs li a{
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	text-align: center;
+
+	display: block;
+	padding: 20px 0px;
+}
+
+ul.tabs li{
+  width: 90%;
+}
+
+ul.tabs li:hover {
+  background-color: #169BD5;
+  transition-duration: 0.3s;
+}
+
+.active{
+	background: #0984CC;
+}
+
+ul.tabs li a .tab-text{
+	margin-left: 8px;
+}
+
+.secciones{
+	width: 100%;
+	background: #fff;
+}
+
+.secciones article{
+	padding: 30px;
+}
+
+.secciones article p{
+	text-align: justify;
+}
+
+
+@media screen and (max-width: 700px){
+	ul.tabs li{
+		width: none;
+		flex-basis: 0;
+		flex-grow: 1;
+	}
+}
+
+@media screen and (max-width: 450px){
+	ul.tabs li a{
+		padding: 15px 0px;
+	}
+
+	ul.tabs li a .tab-text{
+		display: none;
+	}
+
+	.secciones article{
+		padding: 20px;
+  }
+  
+  .tema-tabla{
+    padding: 25px 0px;
+  }
+}
+
+</style>
+
+<div class="contenedor-solicitudes">
 <div class="container">
-<h3>Haz clic para ver tus trabajos</h3>
+<h1 style="margin: 100px 0px">Haz clic para ver tus trabajos</h1>
 
- <button type="button"  style="display: block; width: 100%;" class="nav-link boton editar" data-toggle="collapse" data-target="#demo">Solicitudes de Trabajo</button>
-<div id="demo" class="collapse">
-	
-  <table class = 'table table-stripped'>
-
+<div class="wrap">
+		<ul class="tabs">
+			<li><a href="#demo" data-toggle="collapse" data-target="#demo"><span class="fa fa-home"></span><span class="tab-text">Solicitudes de Trabajo</span></a></li>
+			<li><a href="#demo2"data-toggle="collapse" data-target="#demo2"><span class="fa fa-group"></span><span class="tab-text">Trabajos en Progreso</span></a></li>
+			<li><a href="#demo3" data-toggle="collapse" data-target="#demo3"><span class="fa fa-briefcase"></span><span class="tab-text">Trabajos realizados</span></a></li>
+			<li><a href="#demo4" data-toggle="collapse" data-target="#demo4"><span class="fa fa-bookmark"></span><span class="tab-text">Trabajos recibidos</span></a></li>
+    </ul>
+    
+    <div class="secciones">
+			<article id="demo">
+      
+      <h2 align="center" class="tema-tabla">Solicitudes</h2>
+      <table class = 'table table-stripped'>
+      
 <thead>
 
 <tr>
@@ -70,14 +170,12 @@ echo"
 
 </tbody>
 </table>
-
-</div>
-</div>
-
-<div class="container">
-
-  <button type="button"  style="display: block; width: 100%;"class="nav-link boton editar" data-toggle="collapse" data-target="#demo2">Trabajos en Progreso</button>
-  <div id="demo2" class="collapse">
+<br>
+      
+</article>
+<article id="demo">
+<div id="demo2" class="collapse">
+<h2 align="center" class="tema-tabla">En Progreso</h2>
   <table class = 'table table-stripped'>
 
   <thead>
@@ -128,13 +226,12 @@ echo"
 
 </tbody>
 </table>
-
+<br>
   </div>
-</div>
-<div class="container">
-  
-  <button type="button"  style="display: block; width: 100%;" class="nav-link boton editar" data-toggle="collapse" data-target="#demo3">Trabajos realizados</button>
-  <div id="demo3" class="collapse">
+</article>
+<article id="demo">
+<div id="demo3" class="collapse">
+<h2 align="center" class="tema-tabla">Realizados</h2>
   <table class = 'table table-stripped'>
 
 <thead>
@@ -180,15 +277,12 @@ echo"
 </tbody>
 </table>
     <br>
-    <br>
+    
   </div>
-</div>
-
-<div class="container">
-
- <button type="button"  style="display: block; width: 100%;" class="nav-link boton editar" data-toggle="collapse" data-target="#demo4">Trabajos recibidos</button>
- <div id="demo4" class="collapse">
-	
+</article>
+<article id="demo">
+<div id="demo4" class="collapse">
+<h2 align="center" class="tema-tabla">Recibidos</h2>
   <table class = 'table table-stripped'>
 
  <thead>
@@ -237,15 +331,43 @@ echo"
 ?>
 
 </tbody>
+
 </table>
-
+<br>
+</div>
+</article>
 </div>
 </div>
+</div>
+</div>			
 
 
+</div>
 
+<div class="pie linea" style=" margin: 50px 0px;
+    width: 100%;
+    height: 150px;
+    padding: 300px auto;
+    background-color: rgb(28, 39, 39);
+    color: white;">
+	<p class="texto-pie" style="text-align: center; margin: auto;">Esta Zona fue creada para dar mas espacio y creatividad a la pagina @Jeremy</p>
+</div>
 
+<script>
 
+$('ul.tabs li a:first').addClass('active');
+	$('.secciones article').hide();
+	$('.secciones article:first').show();
 
-</body>
-</html>
+	$('ul.tabs li a').click(function(){
+		$('ul.tabs li a').removeClass('active');
+		$(this).addClass('active');
+		$('.secciones article').hide();
+
+		var activeTab = $(this).attr('href');
+		$(activeTab).show();
+		return false;
+	});
+
+</script>
+
