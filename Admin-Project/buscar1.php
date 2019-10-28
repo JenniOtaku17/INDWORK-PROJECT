@@ -25,6 +25,7 @@
 
 include ('conexion.php');
 
+if(isset($_REQUEST['op']) and empty($_REQUEST['filtro'])){
 $registros=mysqli_query($conexion,"select NOMBRE,APELLIDO,OFICIO,FOTO, ID from PROFESIONAL where OFICIO ='$_REQUEST[op]' or NOMBRE ='$_REQUEST[op]' or REGION ='$_REQUEST[op]'") or
   die("Problemas en el select:".mysqli_error($conexion));
 
@@ -32,30 +33,17 @@ $registros=mysqli_query($conexion,"select NOMBRE,APELLIDO,OFICIO,FOTO, ID from P
 
 while ($reg=mysqli_fetch_array($registros))
 {
-  if(is_null($reg['ID'])){
-    echo "
-    <script> 
-    alertify
-      .alert('INDWORK aviso','No se han encontrado coincidencias', function(){
-        alertify.message('OK');
-        window.location= 'buscar.php';
-      });
-     </script>";
-    
-}
-
-else{
      echo '<div class="container">
     <table class="table tabla">
     <thead class="thead-light encabezado">
         <tr>
-          
+
         </tr>
       </thead>
 	<tbody>
     <tr>
     <div  class="container">
-    
+
     <div class="cuadro">
 		<div class="cuadro-izquierda ">
       <a href="perfil.php?id='.$reg['ID'].'">
@@ -76,8 +64,57 @@ else{
     </div>
 	</div>
 	</tr></tbody></table></div>';
-  
+
 }}
+if(isset($_REQUEST['op']) and !empty($_REQUEST['filtro'])){
+$registros=mysqli_query($conexion,"select NOMBRE,APELLIDO,OFICIO,FOTO, ID from PROFESIONAL where (OFICIO ='$_REQUEST[op]' or NOMBRE ='$_REQUEST[op]') and (REGION ='$_REQUEST[filtro]' or PAIS='$_REQUEST[filtro]')") or
+  die("Problemas en el select:".mysqli_error($conexion));
+
+while ($reg=mysqli_fetch_array($registros))
+{
+     echo '<div class="container">
+    <table class="table tabla">
+    <thead class="thead-light encabezado">
+        <tr>
+
+        </tr>
+      </thead>
+	<tbody>
+    <tr>
+    <div  class="container">
+
+    <div class="cuadro">
+		<div class="cuadro-izquierda ">
+      <a href="perfil.php?id='.$reg['ID'].'">
+      <img  class="foto" src="data:image/jpg;base64,'.base64_encode($reg['FOTO']).'" alt="">
+      </a>
+		</div>
+		<div class="cuadro-derecha ">
+			<div>
+				<p class="nombre-perfil" >'.$reg['NOMBRE'].' '.$reg['APELLIDO'].'</p>
+			</div>
+			<div>
+				<p class="oficio">'.$reg['OFICIO'].'</p>
+			</div>
+    </div>
+    <div class="visitar centrado">
+      <a class="boton nada" href="perfil.php?id='.$reg['ID'].'"> Visitar Perfil </a>
+      </div>
+    </div>
+	</div>
+	</tr></tbody></table></div>';
+
+}}else{
+  echo "
+  <script>
+  alertify
+    .alert('INDWORK aviso','No has insertado ningun dato', function(){
+      alertify.message('OK');
+      window.location= 'buscar.php';
+    });
+   </script>";
+}
+
 ?>
 
 

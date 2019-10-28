@@ -22,6 +22,7 @@
             <h1 class="titulo">Buscas a un Profesional?</h1>
             <form action="buscar1.php" method="POST" class="  formulario">
                 <input type="text" name="op" class=" mr-sm-2 buscador-text" placeholder="Dime el oficio que deseas buscar">
+                <label>Filtrar por region:<input type="text" name="filtro"  placeholder="Region o Pais"></label>
                 <input type="submit" name="buscar" value="  BUSCAR  " class=" boton">
             </form>
         </div>
