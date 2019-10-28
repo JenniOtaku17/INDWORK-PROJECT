@@ -46,7 +46,7 @@ $registros=mysqli_query($conexion,"select ID, CEDULA,NOMBRE,CV,FOTO,PASSWORD,OFI
 while ($reg=mysqli_fetch_array($registros))
 {
 	$id= $reg['ID'];
-	if($_REQUEST['password']== $reg['PASSWORD'] or  isset($_REQUEST['id'])){
+	if(isset($_REQUEST['id'])){
 
 	echo '<div class="container">
 	<div class="cuadro ">
@@ -95,44 +95,18 @@ while ($reg=mysqli_fetch_array($registros))
 
 	}
 
-	
-	
-	
-	
-	
+
+
+
+
+
 	else{
 
-		echo "<script> alertify.alert('INDWORK aviso','No fue posible iniciar sesion, verifica los datos!', function(){ alertify.message('OK'); window.location= 'iniciarseccion.html'; }); </script>";
+		echo "<script> alertify.alert('INDWORK aviso','Erroe al cargar informacion del usuario!', function(){ alertify.message('OK'); window.location= 'iniciarseccion.html'; }); </script>";
 
 	}
 
-	echo "<h1>Valoraciones</h1><br>
-	<br>";
-	
-
-    mysqli_set_charset($conexion,'utf8');
-	$calificacion=mysqli_query($conexion,"select p.NOMBRE,p.APELLIDO,p.FOTO,p.ID,e.COMENTARIO,e.FECHA,e.ESTRELLAS
-	 from PROFESIONAL p inner join evaluacion e 
-	 on e.ID_EMISOR = p.ID
-	 where ID_RECEPTOR = '$id'") or
-	  die("Problemas en el select:".mysqli_error($conexion));
-
-
-
-while ($reg=mysqli_fetch_array($calificacion))
-	echo '
-	<div class="container" >
-	<div class="media border p-3">
-	<img class="mr-3 mt-3 rounded-circle" height="110px" width="100px" src="data:image/jpg;base64,'.base64_encode($reg['FOTO']).'" alt="">
-	<div class="media-body">
-		<h4>'.$reg['NOMBRE'].' '.$reg['APELLIDO'].' <small><i>'.' publicado en '.$reg['FECHA'].'</i></small></h4>
-		<p>'.$reg['COMENTARIO'].'</p>
-		<p class="Estrellas" > <h2> <font color="gold"> '.$reg['ESTRELLAS'].'</font></h2></p>
-	</div>
-	</div><br>
-	</div>';
-	
-
+	include ('valoraciones.php');
 }
 
 ?>

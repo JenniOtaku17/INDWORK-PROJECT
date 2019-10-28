@@ -24,46 +24,74 @@ if(isset($_SESSION['user'])){
 
   include ('conexion.php');
   include ('notificaciones.php');
-  
 
+
+  if($count>0){
   $usuario=mysqli_query($conexion,"select NOMBRE, APELLIDO, FOTO FROM PROFESIONAL WHERE ID = $id ")or
   die("Problemas en el select:".mysqli_error($conexion));
-  
+
   while ($us=mysqli_fetch_array($usuario))
         {
-        
+
         $foto = $us['FOTO'];
 
         echo "<nav class='navbar navbar-default bg-dark' width='100%'>
-        <img src='img/logo.png' height='50px' width=220px'>
+        <a href='inicio.php'><img src='img/logo.png' height='50px' width=220px'></a>
         <ul class='navbar nav justify-content-end text-white'>
-            
-            <li class='nav-item '>
-                
-                <a class='nav-link perfil-nav' href='Iniciarseccion.php'><img class='foto-nav' src='data:image/jpg;base64,".base64_encode($foto)."'>{$us['NOMBRE']} {$us['APELLIDO']}</a>  
-                         
-            </li>
-            
-            <i class='fas fa-2x fa-bell icon-white badge'>$count</i>
-            
+
+
             <li class='nav-item'>
                 <a class='nav-link' href='buscar.php'>Buscar</a>
             </li>
-            <li class='nav-item'>
-                <a class='nav-link' href='inicio.php'>Inicio</a>
+            <li class='nav-item '>
+
+                <a class='nav-link perfil-nav' href='Iniciarseccion.php'><img class='foto-nav' src='data:image/jpg;base64,".base64_encode($foto)."'>{$us['NOMBRE']} {$us['APELLIDO']}</a>
+
             </li>
 
+            <i class='fas fa-2x fa-bell icon-white badge' style='color:#64FF32'>$count</i>
+
             <li class='nav-item'>
-                <a class='nav-link' href='cerrarsession.php'>Cerrar Sesion</a>
+                <a href='cerrarsession.php'><img src='img/cerrar.png' height='35px' width=35px'></a>
             </li>
         </ul>
         </nav>" ;
 
         }
+      }else{
+        $usuario=mysqli_query($conexion,"select NOMBRE, APELLIDO, FOTO FROM PROFESIONAL WHERE ID = $id ")or
+        die("Problemas en el select:".mysqli_error($conexion));
 
+        while ($us=mysqli_fetch_array($usuario))
+              {
+
+              $foto = $us['FOTO'];
+
+              echo "<nav class='navbar navbar-default bg-dark' width='100%'>
+              <a href='inicio.php'><img src='img/logo.png' height='50px' width=220px'></a>
+              <ul class='navbar nav justify-content-end text-white'>
+
+
+                  <li class='nav-item'>
+                      <a class='nav-link' href='buscar.php'>Buscar</a>
+                  </li>
+                  <li class='nav-item '>
+
+                      <a class='nav-link perfil-nav' href='Iniciarseccion.php'><img class='foto-nav' src='data:image/jpg;base64,".base64_encode($foto)."'>{$us['NOMBRE']} {$us['APELLIDO']}</a>
+
+                  </li>
+
+
+                  <li class='nav-item'>
+                      <a href='cerrarsession.php'><img src='img/cerrar.png' height='35px' width=35px'></a>
+                  </li>
+              </ul>
+              </nav>" ;
+            }
+      }
 }else{
     echo '<nav class="navbar navbar-default bg-dark" width="100%">
-    <img src="img/logo.png" height="50px" width="220px">
+    <a href="inicio.php"><img src="img/logo.png" height="50px" width="220px"></a>
     <ul class="navbar nav justify-content-end text-white">
         <li class="nav-item">
             <a class="nav-link" href="iniciarsesion.php">Iniciar Sesion</a>
@@ -75,9 +103,6 @@ if(isset($_SESSION['user'])){
             <a class="nav-link" href="buscar.php">Visitante</a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="inicio.php">Inicio</a>
-        </li>
     </ul>
 </nav>';
 }
