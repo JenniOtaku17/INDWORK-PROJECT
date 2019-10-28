@@ -14,13 +14,21 @@
     
     .boton {
         background-color: #169BD5;
-        padding: 10px;
+        padding: 1%;
         color: white;
         border-radius: 25px;
         transition-duration: 0.5s;
         margin: 0 auto 10px;
         border: 2px solid #169BD5;
         text-align: center;
+        font-size: 0.7em;
+    }
+    
+    @media only screen and (max-width: 299px) {
+        .paddings {
+            width: 90%;
+            font-size: 1em;
+        }
     }
     
     .espacio-abajo {
@@ -28,7 +36,7 @@
     }
     
     .paddings {
-        width: 250px;
+        width: 90%;
     }
     
     .quitar {
@@ -59,6 +67,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
+        align-items: center;
     }
     
     .ancho-20 {
@@ -80,11 +89,12 @@
     
     .contratante {
         width: 50%;
-        margin: 50px 5%;
+        margin: 50px 2%;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
-        align-items: center;
+        justify-content: center;
+        align-content: center;
     }
     
     .subtitulo {
@@ -146,4 +156,11 @@
     
     .buscador-text {
         width: 80%;
+    }
+    
+    ul.tabs {
+        width: 100%;
+        background: #363636;
+        list-style: none;
+        display: flex;
     }
