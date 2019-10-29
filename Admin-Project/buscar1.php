@@ -79,7 +79,7 @@ while ($reg=mysqli_fetch_array($registros))
 
 }}
 if(isset($_REQUEST['op']) and !empty($_REQUEST['filtro'])){
-$registros=mysqli_query($conexion,"select NOMBRE,APELLIDO,OFICIO,FOTO, ID from PROFESIONAL where (OFICIO ='$_REQUEST[op]' or NOMBRE ='$_REQUEST[op]') and (REGION ='$_REQUEST[filtro]' or PAIS='$_REQUEST[filtro]')") or
+$registros=mysqli_query($conexion,"select NOMBRE,APELLIDO,OFICIO,FOTO, ID from profesional where (OFICIO ='$_REQUEST[op]' or NOMBRE ='$_REQUEST[op]') and (REGION ='$_REQUEST[filtro]' or PAIS='$_REQUEST[filtro]')") or
   die("Problemas en el select:".mysqli_error($conexion));
 
 while ($reg=mysqli_fetch_array($registros))

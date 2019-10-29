@@ -28,7 +28,7 @@
 <!--------------------Container------------------------>
 
   <?php
-  error_reporting(0);
+  //error_reporting(0);
   if(isset($_POST['registrar']))
   {
     $nombre = $_FILES['cv']['name'];
@@ -43,7 +43,7 @@
 include ('conexion.php');
 
     if ($_REQUEST['password']== $_REQUEST['repassword']){
-try{
+if( isset($_REQUEST['nombre']) and isset($_REQUEST['cedula']) and isset($_REQUEST['apellido']) and isset($_REQUEST['oficio']) and isset($_REQUEST['tipodeusuario']) and isset($_REQUEST['pais']) and isset($_FILES['foto']) and isset($nombre) and isset($_REQUEST['telefono']) and isset($_REQUEST['direccion']) and isset($_REQUEST['correo']) and isset($_REQUEST['password']) and isset($_REQUEST['region']) and isset($_REQUEST['me'])){
 $img = addslashes(file_get_contents($_FILES['foto']['tmp_name']));
 mysqli_query($conexion,"insert into profesional (NOMBRE,APELLIDO,CEDULA,OFICIO,TIPODEUSUARIO,PAIS,FOTO,CV,TELEFONO,DIRECCION,CORREO,PASSWORD,REGION,ME) values
                        ('$_REQUEST[nombre]','$_REQUEST[apellido]','$_REQUEST[cedula]', '$_REQUEST[oficio]', '$_REQUEST[tipodeusuario]','$_REQUEST[pais]','$img','$nombre', '$_REQUEST[telefono]', '$_REQUEST[direccion]','$_REQUEST[correo]','$_REQUEST[password]','$_REQUEST[region]','$_REQUEST[me]')")
@@ -56,7 +56,7 @@ mysqli_query($conexion,"insert into profesional (NOMBRE,APELLIDO,CEDULA,OFICIO,T
 
 mysqli_close($conexion);
   echo "<script> alertify.alert('INDWORK aviso','Usuario registrado Exitosamente!', function(){ alertify.message('OK'); window.location= 'iniciarsesion.php'; }); </script>";
-}catch(Exception $e)
+}else
 {
 	echo "<script> alertify.alert('INDWORK aviso','Error al registrar usuario!', function(){ alertify.message('OK'); window.location= 'registrar.php'; }); </script>";
 }}else{
