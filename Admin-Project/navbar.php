@@ -37,7 +37,7 @@ if(isset($_SESSION['user'])){
         $foto = $us['FOTO'];
 
         echo "<nav class='navbar fixed-top bg-dark' width='100%'>
-        <a href='inicio.php'><img src='img/logo.png' height='50px' width=220px'></a>
+        <a href='index.php'><img src='img/logo.png' height='50px' width=220px'></a>
         <ul class='navbar nav justify-content-end text-white'>
 
 
@@ -70,11 +70,11 @@ if(isset($_SESSION['user'])){
               $foto = $us['FOTO'];
 
               echo "<nav class='navbar fixed-top bg-dark' width='100%'>
-              <a href='inicio.php'><img src='img/logo.png' height='50px' width=220px'></a>
+              <a href='index.php'><img src='img/logo.png' height='50px' width=220px'></a>
               <ul class='navbar nav justify-content-end text-white'>
 
 
-                  
+
                   <li class='nav-item '>
 
                       <a class='nav-link perfil-nav' href='Iniciarseccion.php'><img class='foto-nav' src='data:image/jpg;base64,".base64_encode($foto)."'>{$us['NOMBRE']} {$us['APELLIDO']}</a>
@@ -94,7 +94,7 @@ if(isset($_SESSION['user'])){
       }
 }else{
     echo '<nav class="navbar fixed-top bg-dark" width="100%">
-    <a href="inicio.php"><img src="img/logo.png" height="50px" width="220px"></a>
+    <a href="index.php"><img src="img/logo.png" height="50px" width="220px"></a>
     <ul class="navbar nav justify-content-end text-white">
         <li class="nav-item">
             <a class="nav-link" href="iniciarsesion.php">Iniciar Sesion</a>

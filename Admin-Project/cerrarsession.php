@@ -16,11 +16,11 @@ session_start();
 session_destroy();
 
 echo "
-<script> 
+<script>
 alertify
   .alert('INDWORK aviso','Acabas de cerrar sesion', function(){
     alertify.message('OK');
-    window.location= 'inicio.php';
+    window.location= 'index.php';
   });
  </script>";
 ?>

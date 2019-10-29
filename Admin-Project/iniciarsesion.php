@@ -18,7 +18,7 @@
 <?php
 error_reporting(0);
     include ('navbar.php');
-    
+
 ?>
 
 <br>
@@ -31,7 +31,7 @@ if(isset($_SESSION['user'])){
 
     echo "<script>  window.location= 'iniciarseccion.php'; </script>";
 }else{
-    
+
     echo '<section class="container">
 	<div class="d-flex justify-content-center">
   <div class="error-message"><?php if(isset($message)) { echo $message; } ?></div>
@@ -49,12 +49,12 @@ if(isset($_SESSION['user'])){
     <input type="password" name="password" onclick= "none"><span class="highlight" required></span><span class="bar"></span>
     <label><i class="fas fa-unlock"></i> Contraseña</label>
   </div>
-  
+
 	<button type="submit" class="button buttonBlue" name="login">INICIAR SESION
   <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
   </button>
   <div class="sign-up">
-     No tienes una cuenta? <a href="resgistrar.html">Registrate</a>
+     No tienes una cuenta? <a href="registrar.php">Registrate</a>
   </div>
   </form>
   </div>
