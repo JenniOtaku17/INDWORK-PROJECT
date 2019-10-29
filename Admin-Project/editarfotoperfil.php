@@ -19,7 +19,7 @@ include ('conexion.php');
 
 if(isset($id) and isset($_FILES['foto'])){
     $img = addslashes(file_get_contents($_FILES['foto']['tmp_name']));
-    mysqli_query($conexion,"update PROFESIONAL SET FOTO='$img' where ID=$id ") or
+    mysqli_query($conexion,"update profesional SET FOTO='$img' where ID=$id ") or
 die("Problemas en el select:".mysqli_error($conexion));
 
 echo "<script> alertify.alert('INDWORK aviso','Datos Actualizados Exitosamente!',

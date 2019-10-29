@@ -93,7 +93,7 @@ ul.tabs li a .tab-text{
 	.secciones article{
 		padding: 20px;
   }
-  
+
   .tema-tabla{
     padding: 25px 0px;
   }
@@ -112,13 +112,13 @@ ul.tabs li a .tab-text{
 			<li><a href="#demo3" data-toggle="collapse" data-target="#demo3"><span class="fa fa-briefcase"></span><span class="tab-text">Trabajos realizados</span></a></li>
 			<li><a href="#demo4" data-toggle="collapse" data-target="#demo4"><span class="fa fa-bookmark"></span><span class="tab-text">Trabajos recibidos</span></a></li>
     </ul>
-    
+
     <div class="secciones">
 			<article id="demo">
-      
+
       <h2 align="center" class="tema-tabla">Solicitudes</h2>
       <table class = 'table table-stripped'>
-      
+
 <thead>
 
 <tr>
@@ -134,7 +134,7 @@ ul.tabs li a .tab-text{
 
 <tbody>
 
-<?php 
+<?php
 include ('conexion.php');
 
 $registrost=mysqli_query($conexion,"Select c.ID, c.ID_EMISOR, p.NOMBRE , p.APELLIDO, c.DESCRIPCION, c.ASUNTO
@@ -149,7 +149,7 @@ $id_contra = $tr['ID'];
 $aceptar = 'aceptar';
 $rechazar = "rechazar";
 
-mysqli_query($conexion,"update CONTRATOS set ESTADO = 'visto' where ESTADO =' ' and ID = $id_contra ")
+mysqli_query($conexion,"update contratos set ESTADO = 'visto' where ESTADO =' ' and ID = $id_contra ")
   or die("Problemas en el select".mysqli_error($conexion));
 
 echo"
@@ -171,7 +171,7 @@ echo"
 </tbody>
 </table>
 <br>
-      
+
 </article>
 <article id="demo">
 <div id="demo2" class="collapse">
@@ -192,7 +192,7 @@ echo"
   </thead>
 
   <tbody>
-  <?php 
+  <?php
 
 $rg=mysqli_query($conexion,"Select c.ID, c.ID_EMISOR,c.FECHA_INICIO, p.NOMBRE , p.APELLIDO, c.DESCRIPCION, c.ASUNTO
 From contratos c inner join profesional p
@@ -205,7 +205,7 @@ while($tb =mysqli_fetch_array($rg)){
 $id_contra = $tb['ID'];
 $terminar = 'terminar';
 
-mysqli_query($conexion,"update CONTRATOS set ESTADO = 'visto' where ESTADO =' ' and ID = $id_contra ")
+mysqli_query($conexion,"update contratos set ESTADO = 'visto' where ESTADO =' ' and ID = $id_contra ")
   or die("Problemas en el select".mysqli_error($conexion));
 
 echo"
@@ -248,7 +248,7 @@ echo"
 </thead>
 
 <tbody>
-<?php 
+<?php
 mysqli_set_charset($conexion,'utf8');
 $rg=mysqli_query($conexion,"Select c.ID, c.ID_EMISOR,c.FECHA_INICIO,c.FECHA_FIN, p.NOMBRE , p.APELLIDO, c.DESCRIPCION, c.ASUNTO
 From contratos c inner join profesional p
@@ -277,7 +277,7 @@ echo"
 </tbody>
 </table>
     <br>
-    
+
   </div>
 </article>
 <article id="demo">
@@ -300,7 +300,7 @@ echo"
 
 <tbody>
 
-<?php 
+<?php
 include ('conexion.php');
 
 mysqli_set_charset($conexion,'utf8');
@@ -339,7 +339,7 @@ echo"
 </div>
 </div>
 </div>
-</div>			
+</div>
 
 
 </div>
@@ -370,4 +370,3 @@ $('ul.tabs li a:first').addClass('active');
 	});
 
 </script>
-

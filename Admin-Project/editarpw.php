@@ -17,7 +17,7 @@ $id= $_SESSION['user'];
 
 include ('conexion.php');
 
-$registros=mysqli_query($conexion,"select PASSWORD from PROFESIONAL where  ID=".$id) or
+$registros=mysqli_query($conexion,"select PASSWORD from profesional where  ID=".$id) or
   die("Problemas en el select:".mysqli_error($conexion));
 
 while ($reg=mysqli_fetch_array($registros))

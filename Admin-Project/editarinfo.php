@@ -21,7 +21,7 @@ $cedula = $_REQUEST['cedula'];
 $telefono = $_REQUEST['telefono'];
 
 if(isset($id) and isset($_REQUEST['nombre']) and isset($_REQUEST['apellido']) and isset($_REQUEST['cedula']) and isset($_REQUEST['telefono'])){
-mysqli_query($conexion,"update PROFESIONAL
+mysqli_query($conexion,"update profesional
               SET NOMBRE= '$nombre',
                   APELLIDO = '$apellido',
                   CEDULA = '$cedula',

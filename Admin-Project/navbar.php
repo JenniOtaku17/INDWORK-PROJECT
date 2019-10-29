@@ -28,7 +28,7 @@ if(isset($_SESSION['user'])){
 
 
   if($count>0){
-  $usuario=mysqli_query($conexion,"select NOMBRE, APELLIDO, FOTO FROM PROFESIONAL WHERE ID = $id ")or
+  $usuario=mysqli_query($conexion,"select NOMBRE, APELLIDO, FOTO FROM profesional WHERE ID = $id ")or
   die("Problemas en el select:".mysqli_error($conexion));
 
   while ($us=mysqli_fetch_array($usuario))
@@ -61,7 +61,7 @@ if(isset($_SESSION['user'])){
 
         }
       }else{
-        $usuario=mysqli_query($conexion,"select NOMBRE, APELLIDO, FOTO FROM PROFESIONAL WHERE ID = $id ")or
+        $usuario=mysqli_query($conexion,"select NOMBRE, APELLIDO, FOTO FROM profesional WHERE ID = $id ")or
         die("Problemas en el select:".mysqli_error($conexion));
 
         while ($us=mysqli_fetch_array($usuario))

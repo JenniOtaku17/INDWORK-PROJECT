@@ -26,7 +26,7 @@ $destino = "cvs/".$nombre;
 if(isset($id) and isset($nombre)){
     copy($ruta, $destino);
 
-mysqli_query($conexion,"update PROFESIONAL
+mysqli_query($conexion,"update profesional
               SET CV= '$nombre'
                where ID =$id ") or
 die("Problemas en el select:".mysqli_error($conexion));
