@@ -20,10 +20,19 @@
 .formulario {
     width: 60%;
     padding: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.buscar-texto {
+    width: 30%;
+    border-style: none;
+    outline: none;
 }
 
 .buscador-text {
-    width: 80%;
+    width: 50%;
     border-style: none;
     outline: none;
     background-color: white;
@@ -36,10 +45,46 @@
     box-shadow: -1px 7px 16px -6px rgba(0, 0, 0, 0.75);
 }
 
+.buscador-region {
+    width: 30%;
+    border-style: none;
+    outline: none;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 50px;
+    padding: 10px;
+    margin: 0px 5px;
+    transition-duration: 0.4s;
+    -webkit-box-shadow: -1px 7px 16px -6px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 7px 16px -6px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 7px 16px -6px rgba(0, 0, 0, 0.75);
+}
+
 .oscuro {
     -webkit-box-shadow: 2px 2px 26px -12px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 2px 2px 26px -12px rgba(0, 0, 0, 0.75);
     box-shadow: 2px 2px 26px -12px rgba(0, 0, 0, 0.75);
+}
+
+.boton-buscar {
+    background-color: #169BD5;
+    padding: 1%;
+    width: 15%;
+    color: white;
+    border-radius: 25px;
+    transition-duration: 0.5s;
+    margin: 0 auto 10px;
+    border: 2px solid #169BD5;
+    text-align: center;
+    font-size: 0.7em;
+}
+
+.boton-buscar:hover {
+    background-color: white;
+    color: #169BD5;
+    transition-duration: 0.5s;
+    border: 2px solid #169BD5;
+    padding: 10px 20px;
 }
 
 .fondo {
@@ -47,6 +92,11 @@
 }
 
 .buscador-text:focus {
+    border: 2px solid #169BD5;
+    transition-duration: 0.4s;
+}
+
+.buscador-region:focus {
     border: 2px solid #169BD5;
     transition-duration: 0.4s;
 }
@@ -117,4 +167,8 @@
     margin-top: 2%;
     font-size: 1.7em;
     font-weight: 300;
+}
+
+.txt1 {
+    width: 10%;
 }
