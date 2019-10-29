@@ -16,15 +16,21 @@
 ?>
 <body>
 
+
+
     <div class="contenedor ">
         <img src="img/buscar2.jpg" alt="" width="100%">
         <div class="buscador ">
             <h1 class="titulo">Buscas a un Profesional?</h1>
-            <form action="buscar1.php" method="POST" class="  formulario">
-                <input type="text" name="op" class=" mr-sm-2 buscador-text" placeholder="Dime el oficio que deseas buscar">
-                <label>Filtrar por region:<input type="text" name="filtro"  placeholder="Region o Pais"></label>
-                <input type="submit" name="buscar" value="  BUSCAR  " class=" boton">
+            <form action="buscar1.php" method="POST" class="formulario">
+                
+                <input type="text" name="op" class="buscador-text" placeholder="Dime el oficio que deseas buscar">
+                
+                <input type="text" name="filtro" class="buscador-region"  placeholder="Busca por Region o Pais">
+                <input type="submit" name="buscar" value="  BUSCAR  " class=" boton-buscar">
             </form>
+       
+            
         </div>
     </div>
 

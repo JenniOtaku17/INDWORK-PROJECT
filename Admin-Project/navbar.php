@@ -4,6 +4,7 @@
 <link rel="shortcut icon" href="#" />
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
 <link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="css/buscar.css">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css"/>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.min.css"/>
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.min.css"/>
@@ -35,7 +36,7 @@ if(isset($_SESSION['user'])){
 
         $foto = $us['FOTO'];
 
-        echo "<nav class='navbar navbar-default bg-dark' width='100%'>
+        echo "<nav class='navbar fixed-top bg-dark' width='100%'>
         <a href='inicio.php'><img src='img/logo.png' height='50px' width=220px'></a>
         <ul class='navbar nav justify-content-end text-white'>
 
@@ -49,10 +50,11 @@ if(isset($_SESSION['user'])){
 
             </li>
 
-            <i class='fas fa-2x fa-bell icon-white badge' style='color:#64FF32'>$count</i>
+            <i class='fas fa-2x fa-bell icon-white badge' style='color:#AE1B1B; margin: 0px 4px'>$count</i>
 
             <li class='nav-item'>
-                <a href='cerrarsession.php'><img src='img/cerrar.png' height='35px' width=35px'></a>
+                <a href='cerrarsession.php'><i class='fas fa-sign-out-alt'></i></a>
+                <!--<img src='img/cerrar.png' height='35px' width=35px' style='margin: 0px 10px'>-->
             </li>
         </ul>
         </nav>" ;
@@ -67,30 +69,31 @@ if(isset($_SESSION['user'])){
 
               $foto = $us['FOTO'];
 
-              echo "<nav class='navbar navbar-default bg-dark' width='100%'>
+              echo "<nav class='navbar fixed-top bg-dark' width='100%'>
               <a href='inicio.php'><img src='img/logo.png' height='50px' width=220px'></a>
               <ul class='navbar nav justify-content-end text-white'>
 
 
-                  <li class='nav-item'>
-                      <a class='nav-link' href='buscar.php'>Buscar</a>
-                  </li>
+                  
                   <li class='nav-item '>
 
                       <a class='nav-link perfil-nav' href='Iniciarseccion.php'><img class='foto-nav' src='data:image/jpg;base64,".base64_encode($foto)."'>{$us['NOMBRE']} {$us['APELLIDO']}</a>
 
                   </li>
 
+                  <li class='nav-item'>
+                      <a class='nav-link' href='buscar.php'><i class='fas fa-search fa-2x'></i></a>
+                  </li>
 
                   <li class='nav-item'>
-                      <a href='cerrarsession.php'><img src='img/cerrar.png' height='35px' width=35px'></a>
+                      <a href='cerrarsession.php'><i class='fas fa-sign-out-alt fa-2x' ></i></a>
                   </li>
               </ul>
               </nav>" ;
             }
       }
 }else{
-    echo '<nav class="navbar navbar-default bg-dark" width="100%">
+    echo '<nav class="navbar fixed-top bg-dark" width="100%">
     <a href="inicio.php"><img src="img/logo.png" height="50px" width="220px"></a>
     <ul class="navbar nav justify-content-end text-white">
         <li class="nav-item">
