@@ -18,12 +18,10 @@
 <body>
 
 <?php
-  include ('navbar.php');
-
   $idreceptor = $_GET['idreceptor'];
 
   include ('conexion.php');
-
+  session_start();
 
   if(isset($_SESSION['user'])){
   $id = $_SESSION['user'];
@@ -35,7 +33,7 @@
           or die("Problemas en el select".mysqli_error($conexion));
 
           echo "<script> alertify.alert('INDWORK aviso','Calificación enviada exitosamente!',
-          function(){ alertify.message('OK'); window.location= 'iniciarseccion.php?id=".$id."'; }); </script>";
+          function(){ alertify.message('OK'); window.location= 'vssolicitudes.php?id=".$id."'; }); </script>";
          }
          else{
              echo "<script> alertify.alert('INDWORK aviso','Error al calificar!',

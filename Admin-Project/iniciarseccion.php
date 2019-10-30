@@ -104,8 +104,8 @@ while ($reg=mysqli_fetch_array($registros))
 		</div>
 		
 		
-		<h2>Listado de Trabajos</h2>
-		<iframe  class="spytest" src="vssolicitudes.php" style="margin-bottom:10px;border:1px solid #ebebeb;border-radius:4px; width:100%; height:400px;" scrolling="yes" frameborder="0"></iframe>
+		<h2>Listado de Trabajos</h2><br>
+		<iframe  class="spytest" src="vssolicitudes.php" style="margin-bottom:10px;border:1px solid #ebebeb;border-radius:4px; width:100%; height:450px;" scrolling="yes" frameborder="0"></iframe>
 		
 		</div>';
 

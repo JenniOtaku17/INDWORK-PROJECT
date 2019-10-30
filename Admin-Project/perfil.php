@@ -111,57 +111,7 @@ while ($reg=mysqli_fetch_array($registros))
 }
 
 ?>
-<div data-spy="scroll" data-target=".navbar" data-offset="50">
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">  
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#section1">Section 1</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#section2">Section 2</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#section3">Section 3</a>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        Section 4
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#section41">Link 1</a>
-        <a class="dropdown-item" href="#section42">Link 2</a>
-      </div>
-    </li>
-  </ul>
-</nav>
-
-<div id="section1" class="container-fluid bg-success" style="padding-top:70px;padding-bottom:70px">
-  <h1>Section 1</h1>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-</div>
-<div id="section2" class="container-fluid bg-warning" style="padding-top:70px;padding-bottom:70px">
-  <h1>Section 2</h1>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-</div>
-<div id="section3" class="container-fluid bg-secondary" style="padding-top:70px;padding-bottom:70px">
-  <h1>Section 3</h1>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-</div>
-<div id="section41" class="container-fluid bg-danger" style="padding-top:70px;padding-bottom:70px">
-  <h1>Section 4 Submenu 1</h1>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-</div>
-<div id="section42" class="container-fluid bg-info" style="padding-top:70px;padding-bottom:70px">
-  <h1>Section 4 Submenu 2</h1>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-  <p>Try to scroll this section and look at the navigation bar while scrolling! Try to scroll this section and look at the navigation bar while scrolling!</p>
-</div>
-</div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

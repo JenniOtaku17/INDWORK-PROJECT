@@ -13,7 +13,7 @@
 <body>
 
 <?php
-include ('navbar.php');
+session_start();
 if(isset($_GET['id_re'])){
 }
 $id_re = $_GET['id_re']
@@ -21,8 +21,9 @@ $id_re = $_GET['id_re']
 
 <section class="container">
 	<div class="form-group w-75">
-    <br>
-    <br>
+  <div align="left">
+	<a href="vssolicitudes.php"><button  class="btn btn-primary mb-2 primary">Atras</button></a>
+  </div>
 	<h1 align="center">Calificar</h1><br>
 	<form action="calificar1.php?idreceptor=<?php echo $id_re ;?>" method="post">
 

@@ -46,11 +46,11 @@ if(isset($_SESSION['user'])){
             </li>
             <li class='nav-item '>
 
-                <a class='nav-link perfil-nav' href='Iniciarseccion.php'><img class='foto-nav' src='data:image/jpg;base64,".base64_encode($foto)."'>{$us['NOMBRE']} {$us['APELLIDO']}</a>
+                <a class='nav-link perfil-nav' href='iniciarseccion.php'><img class='foto-nav' src='data:image/jpg;base64,".base64_encode($foto)."'>{$us['NOMBRE']} {$us['APELLIDO']}</a>
 
             </li>
 
-            <i class='fas fa-2x fa-bell icon-white badge' style='color:#AE1B1B; margin: 0px 4px'>$count</i>
+            <i class='fas fa-2x fa-bell icon-white badge' style='color:#64FF32; margin: 0px 4px'>$count</i>
 
             <li class='nav-item'>
                 <a href='cerrarsession.php'><i class='fas fa-sign-out-alt'></i></a>
@@ -77,7 +77,7 @@ if(isset($_SESSION['user'])){
 
                   <li class='nav-item '>
 
-                      <a class='nav-link perfil-nav' href='Iniciarseccion.php'><img class='foto-nav' src='data:image/jpg;base64,".base64_encode($foto)."'>{$us['NOMBRE']} {$us['APELLIDO']}</a>
+                      <a class='nav-link perfil-nav' href='iniciarseccion.php'><img class='foto-nav' src='data:image/jpg;base64,".base64_encode($foto)."'>{$us['NOMBRE']} {$us['APELLIDO']}</a>
 
                   </li>
 
