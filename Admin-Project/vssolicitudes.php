@@ -1,124 +1,112 @@
-<!--<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<link rel="shortcut icon" href="#" />-->
-<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
-<link rel="stylesheet" href="css/perfil.css">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css"/>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.min.css"/>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.min.css"/>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.min.css"/>
-<!--<title>Perfil</title>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <style>
+  body {
+    position: relative;
+  }
+  ul.nav-pills {
+    top: 20px;
+    position: fixed;
+  }
+  div.col-8 div {
+    height: 500px;
+  }
+  </style>
 </head>
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="1">
 
-<body>-->
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-sm-3 col-4" id="myScrollspy">
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="#section1">Trabajos Recibidos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#section2">Solicitudes de Trabajo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#section3">Trabajos en progreso</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#section4">Trabajos Realizados</a>
+        </li>
+
+      </ul>
+    </nav>
+    <div class="col-sm-9 col-8">
+
+    <!-- section 1 -->
+      <div id="section1" class="bg-info"> 
+      <h2 align="center" class="tema-tabla">Trabajos Recibidos</h2>
+  <table class = 'table table-stripped'>
+
+ <thead>
+
+<tr>
+
+<th>Facilitador</th>
+<th>Asunto</th>
+<th>Descripcion</th>
+<th>Valorar</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<?php 
+include ('conexion.php');
+session_start();
+$id = $_SESSION['user'];
+
+mysqli_set_charset($conexion,'utf8');
+$registrost=mysqli_query($conexion,"Select c.ID,c.ID_RECEPTOR, c.ID_EMISOR, p.NOMBRE , p.APELLIDO, c.DESCRIPCION, c.ASUNTO
+From contratos c inner join profesional p
+On c.ID_RECEPTOR = p.ID
+ where ID_EMISOR = '$id' and FECHA_FIN != ' ' and ESTADO = 'Terminado' ") or
+  die("Problemas en el select:".mysqli_error($conexion));
 
 
-<style>
+while($tr =mysqli_fetch_array($registrost)){
 
-/*.wrap{
-	width: 100%;
-	max-width: 90%;
-	margin: 30px auto;
-}*/
+  $id_re = $tr['ID_RECEPTOR'];
 
+echo"
 
-ul.tabs{
-	width: 100%;
-	background: #363636;
-	list-style: none;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+<tr>
+
+<td>{$tr['NOMBRE']} {$tr['APELLIDO']}</td>
+<td>{$tr['ASUNTO']}</td>
+<td>{$tr['DESCRIPCION']}</td>
+<td> <a href ='calificar.php?id_re=".$id_re."' class ='btn btn-success'>Valorar Trabajo</a> </td>
+
+</tr>";
+
 }
 
-ul.tabs li a{
-	color: #fff;
-	text-decoration: none;
-	font-size: 16px;
-	text-align: center;
+?>
 
-	display: block;
-	padding: 20px 0px;
-}
+</tbody>
 
-ul.tabs li{
-  width: 90%;
-}
+</table>
 
-ul.tabs li:hover {
-  background-color: #169BD5;
-  transition-duration: 0.3s;
-}
+      </div>
 
-.active{
-	background: #0984CC;
-}
-
-ul.tabs li a .tab-text{
-	margin-left: 8px;
-}
-
-.secciones{
-	width: 100%;
-	background: #fff;
-}
-
-.secciones article{
-	padding: 30px;
-}
-
-.secciones article p{
-	text-align: justify;
-}
-
-
-@media screen and (max-width: 700px){
-	ul.tabs li{
-		width: none;
-		flex-basis: 0;
-		flex-grow: 1;
-	}
-}
-
-@media screen and (max-width: 450px){
-	ul.tabs li a{
-		padding: 15px 0px;
-	}
-
-	ul.tabs li a .tab-text{
-		display: none;
-	}
-
-	.secciones article{
-		padding: 20px;
-  }
-
-  .tema-tabla{
-    padding: 25px 0px;
-  }
-}
-
-</style>
-
-<div class="contenedor-solicitudes">
-<div class="container">
-<h1 style="margin: 100px 0px">Haz clic para ver tus trabajos</h1>
-
-<div class="wrap">
-		<ul class="tabs">
-			<li><a href="#demo" data-toggle="collapse" data-target="#demo"><span class="fa fa-home"></span><span class="tab-text">Solicitudes de Trabajo</span></a></li>
-			<li><a href="#demo2"data-toggle="collapse" data-target="#demo2"><span class="fa fa-group"></span><span class="tab-text">Trabajos en Progreso</span></a></li>
-			<li><a href="#demo3" data-toggle="collapse" data-target="#demo3"><span class="fa fa-briefcase"></span><span class="tab-text">Trabajos realizados</span></a></li>
-			<li><a href="#demo4" data-toggle="collapse" data-target="#demo4"><span class="fa fa-bookmark"></span><span class="tab-text">Trabajos recibidos</span></a></li>
-    </ul>
-
-    <div class="secciones">
-			<article id="demo">
-
-      <h2 align="center" class="tema-tabla">Solicitudes</h2>
+      <!-- section 2 -->
+      <div id="section2" class="bg-info"> 
+      <h2 align="center" class="tema-tabla">Solicitudes de Trabajos</h2>
       <table class = 'table table-stripped'>
-
+      
 <thead>
 
 <tr>
@@ -134,8 +122,8 @@ ul.tabs li a .tab-text{
 
 <tbody>
 
-<?php
-include ('conexion.php');
+<?php 
+
 
 $registrost=mysqli_query($conexion,"Select c.ID, c.ID_EMISOR, p.NOMBRE , p.APELLIDO, c.DESCRIPCION, c.ASUNTO
 From contratos c inner join profesional p
@@ -170,12 +158,11 @@ echo"
 
 </tbody>
 </table>
-<br>
+      </div>  
 
-</article>
-<article id="demo">
-<div id="demo2" class="collapse">
-<h2 align="center" class="tema-tabla">En Progreso</h2>
+      <!-- section 3 -->    
+      <div id="section3" class="bg-info">         
+      <h2 align="center" class="tema-tabla">Trabajos en Progreso</h2>
   <table class = 'table table-stripped'>
 
   <thead>
@@ -192,7 +179,7 @@ echo"
   </thead>
 
   <tbody>
-  <?php
+  <?php 
 
 $rg=mysqli_query($conexion,"Select c.ID, c.ID_EMISOR,c.FECHA_INICIO, p.NOMBRE , p.APELLIDO, c.DESCRIPCION, c.ASUNTO
 From contratos c inner join profesional p
@@ -226,12 +213,12 @@ echo"
 
 </tbody>
 </table>
-<br>
-  </div>
-</article>
-<article id="demo">
-<div id="demo3" class="collapse">
-<h2 align="center" class="tema-tabla">Realizados</h2>
+
+      </div>
+
+      <!-- section 4 -->
+      <div id="section4" class="bg-info">         
+      <h2 align="center" class="tema-tabla">Trabajos Realizados</h2>
   <table class = 'table table-stripped'>
 
 <thead>
@@ -248,7 +235,7 @@ echo"
 </thead>
 
 <tbody>
-<?php
+<?php 
 mysqli_set_charset($conexion,'utf8');
 $rg=mysqli_query($conexion,"Select c.ID, c.ID_EMISOR,c.FECHA_INICIO,c.FECHA_FIN, p.NOMBRE , p.APELLIDO, c.DESCRIPCION, c.ASUNTO
 From contratos c inner join profesional p
@@ -276,97 +263,11 @@ echo"
 
 </tbody>
 </table>
-    <br>
 
-  </div>
-</article>
-<article id="demo">
-<div id="demo4" class="collapse">
-<h2 align="center" class="tema-tabla">Recibidos</h2>
-  <table class = 'table table-stripped'>
+      </div>
+    </div>
+    </div>
+    </div>
 
- <thead>
-
-<tr>
-
-<th>Facilitador</th>
-<th>Asunto</th>
-<th>Descripcion</th>
-
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<?php
-include ('conexion.php');
-
-mysqli_set_charset($conexion,'utf8');
-$registrost=mysqli_query($conexion,"Select c.ID,c.ID_RECEPTOR, c.ID_EMISOR, p.NOMBRE , p.APELLIDO, c.DESCRIPCION, c.ASUNTO
-From contratos c inner join profesional p
-On c.ID_RECEPTOR = p.ID
- where ID_EMISOR = '$id' and FECHA_FIN != ' ' and ESTADO = 'Terminado' ") or
-  die("Problemas en el select:".mysqli_error($conexion));
-
-
-while($tr =mysqli_fetch_array($registrost)){
-
-  $id_re = $tr['ID_RECEPTOR'];
-
-echo"
-
-<tr>
-
-<td>{$tr['NOMBRE']} {$tr['APELLIDO']}</td>
-<td>{$tr['ASUNTO']}</td>
-<td>{$tr['DESCRIPCION']}</td>
-<td> <a href ='calificar.php?id_re=".$id_re."' class ='btn btn-success'>Valorar Trabajo</a> </td>
-
-</tr>";
-
-}
-
-?>
-
-</tbody>
-
-</table>
-<br>
-</div>
-</article>
-</div>
-</div>
-</div>
-</div>
-
-
-</div>
-
-<div class="pie linea" style=" margin: 50px 0px;
-    width: 100%;
-    height: 150px;
-    padding: 300px auto;
-    background-color: rgb(28, 39, 39);
-    color: white;">
-	<p class="texto-pie" style="text-align: center; margin: auto;">Esta Zona fue creada para dar mas espacio y creatividad a la pagina @Jeremy</p>
-</div>
-
-<script>
-
-$('ul.tabs li a:first').addClass('active');
-	$('.secciones article').hide();
-	$('.secciones article:first').show();
-
-	$('ul.tabs li a').click(function(){
-		$('ul.tabs li a').removeClass('active');
-		$(this).addClass('active');
-		$('.secciones article').hide();
-
-		var activeTab = $(this).attr('href');
-		$(activeTab).show();
-		return false;
-	});
-
-</script>
+</body>
+</html>
